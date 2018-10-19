@@ -3,6 +3,11 @@
 ## プログラムの用途
 岡山大学機械システム系学科システムコースの機械工作実習2の授業にて制作するロボットに使用するプログラム
 
+## tree
+- AudioFiles  # 音源ファイル（`.mp3`）
+- main.py
+- src  # Source files
+
 ## 動作環境
 - Raspberry PI
 - Python3
