@@ -93,6 +93,7 @@ $ gdrive sync download [ID] ~/Git/MP2_A2_audiofiles/AudioFiles
 
 ## 参考文献
 [Raspberry Piで音楽(wav/mp3)ファイルを再生する方法 python編](https://qiita.com/Nyanpy/items/cb4ea8dc4dc01fe56918)
+
 [google drive を コマンドから使うgdrive が早くて便利](http://takuya-1st.hatenablog.jp/entry/2016/07/06/034412)
 
 ## 音源
