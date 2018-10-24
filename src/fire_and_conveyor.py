@@ -33,7 +33,7 @@ class FireAndConveyor:
 
     def fire_and_conveyor(self):
         self.button.wait_for_press()
-        self.fire_and_conveyor()
+        self.fire_truck_and_conveyor()
         sleep(self.destruction_wating_time)
 
     def fire_truck_and_conveyor(self):
