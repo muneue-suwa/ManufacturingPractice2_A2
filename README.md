@@ -127,7 +127,9 @@ $ sudo amixer sset PCM [n]%
 
 ## to-do
 1. fire_and_conveyor
-  1. スイッチ（センサー1）を押したら音（サイレン）とベルコン（モータ1）をスタート
+  1. スイッチ（センサー1）を押したら
+    1. 音（サイレン），光を開始
+    1. ベルコン（モータ1）を開始
   1. 一定時間後にベルコン（モータ1）を止める：<font color="Green">ベルコンの動作時間</font>
   1. クレーンが倒れる：<font color="Green">動作開始までの時間</font>
     1. クレーンを倒す（モータ2）: <font color="Green">モータ2の動作時間</font>
@@ -135,7 +137,7 @@ $ sudo amixer sset PCM [n]%
 1. explode_and_escape
   1. 爆発と脱出：センサー（センサー2）でスタート：<font color="Green">センサー反応からアクション開始までの時間</font>
     1. 音（爆発音）と光（LED2）
-    1. ジャンプ（モータ4）：<font color="Green">モータ4の動作時間</font>
+    1. ジャンプ（モータ4）
 
 <font color="Green">Green</font>: setting.json
 
