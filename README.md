@@ -13,7 +13,8 @@ $ tree ~/Git
 └─── ManufacturingPractice2_A2
     ├── README.md
     ├── main.py
-    └── src  # Source files
+    ├── src  # Source files
+    └── setting.json  # Setting file
 ```
 
 ## 動作環境
@@ -123,6 +124,20 @@ Simple mixer control 'PCM',0
 ```shell-session:amixer_音量の調節
 $ sudo amixer sset PCM [n]%
 ```
+
+## to-do
+1. fire_and_conveyor
+  1. スイッチ（センサー1）を押したら音（サイレン）とベルコン（モータ1）をスタート
+  1. 一定時間後にベルコン（モータ1）を止める：<font color="Green">ベルコンの動作時間</font>
+  1. クレーンが倒れる：<font color="Green">動作開始までの時間</font>
+    1. クレーンを倒す（モータ2）: <font color="Green">モータ2の動作時間</font>
+    1. ストッパーを外す（モータ3）: <font color="Green">モータ3の動作時間</font>
+1. explode_and_escape
+  1. 爆発と脱出：センサー（センサー2）でスタート：<font color="Green">センサー反応からアクション開始までの時間</font>
+    1. 音（爆発音）と光（LED2）
+    1. ジャンプ（モータ4）：<font color="Green">モータ4の動作時間</font>
+
+<font color="Green">Green</font>: setting.json
 
 ## 参考文献
 [Raspberry Piで音楽(wav/mp3)ファイルを再生する方法 python編](https://qiita.com/Nyanpy/items/cb4ea8dc4dc01fe56918)
