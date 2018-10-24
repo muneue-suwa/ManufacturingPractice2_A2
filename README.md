@@ -74,6 +74,9 @@ $ crontab ~/Git/ManufacturingPractice2_A2/crontab_mp2_setting
 
 **太字**: setting.json
 
+### 注意事項
+- 開始時間はすべて `センサー` を基準にする．（動作部がボールの動きと一致しないため）
+
 ## その他のマニュアル
 - モータドライバについて：[tb6612fng_manual](manuals/tb6612fng_manual.md) を参照すること
 
