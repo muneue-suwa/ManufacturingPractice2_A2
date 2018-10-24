@@ -37,12 +37,13 @@ class FireAndConveyor:
         sleep(self.destruction_wating_time)
 
     def fire_truck_and_conveyor(self):
-        siren_fig = 32
-        led_time = 12 / siren_fig
+        siren_time = 20
+        led_time = 0.5
+        siren_fig = siren_time / led_time
 
         mixer.init()
         mixer.music.load(self.siren_mp3_path)  # 12sec
-        mixer.music.play(1)
+        mixer.music.play(-1)
         for i in range(siren_fig):
             self.led_siren.on()
             sleep(led_time)
