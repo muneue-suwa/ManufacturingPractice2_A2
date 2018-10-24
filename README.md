@@ -74,6 +74,9 @@ $ crontab ~/Git/ManufacturingPractice2_A2/crontab_mp2_setting
 
 **太字**: setting.json
 
+## その他のマニュアル
+- モータドライバについて：[tb6612fng_manual](manuals/tb6612fng_manual.md) を参照すること
+
 ## 参考文献
 [Raspberry Piで音楽(wav/mp3)ファイルを再生する方法 python編](https://qiita.com/Nyanpy/items/cb4ea8dc4dc01fe56918)
 
