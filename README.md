@@ -42,9 +42,9 @@ $ python3 --version
 Python 3.5.3
 ```
 ## 準備
-### pygame（Pythonのパッケージ）のインストール
+### Pythonの追加パッケージのインストール
 ```shell-session:install_pygame
-$ sudo apt install python3-pygame
+$ sudo apt install python3-pygame python3-gpiozero
 ```
 
 ### gdriveの設定
