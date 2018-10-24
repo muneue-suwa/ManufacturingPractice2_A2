@@ -35,7 +35,6 @@ class FireAndConveyor:
         self.button.wait_for_press()
         self.fire_and_conveyor()
         sleep(self.destruction_wating_time)
-        print("END")
 
     def fire_truck_and_conveyor(self):
         siren_fig = 32
@@ -56,5 +55,8 @@ class FireAndConveyor:
 
 
 if __name__ == "__main__":
+    print("start")
     fac = FireAndConveyor("../../MP2_A2_audiofiles/AudioFiles",
                           3, 3, 3, 3)
+    fac.fire_and_conveyor()
+    print("END")
