@@ -1,0 +1,11 @@
+{
+    "fire_and_conveyor":{
+        "conveyor_time":"",
+        "destruction_wating_time":"",
+        "destroy_crane_time":"",
+        "remove_stopper_time":""
+    },
+    "explode_and_escape":{
+        "explosion_wating_time":""
+    }
+}
