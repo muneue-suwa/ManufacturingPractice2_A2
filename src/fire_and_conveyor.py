@@ -22,46 +22,42 @@ button_number = 3
 class FireAndConveyor:
     def __init__(self,
                  audiofiles_dir,
-                 conveyor_time,
-                 destruction_wating_time,
-                 destroy_crane_time,
-                 remove_stopper_time):
-        siren_mp3 = "ambulance-siren2.mp3"
-        self.siren_mp3_path = path.join(audiofiles_dir, siren_mp3)
-        self.led_siren = LED(led_number)
-        self.motor_conveyor = LED(conveyour_number)
-        self.button = Button(button_number)
-        self.destruction_wating_time = destruction_wating_time
-        self.conveyor_time = conveyor_time
+                 siren_led_pin_number,
+                 conveyour_pin_number):
+        self.siren = Siren(LED(siren_led_pin_number))
+        self.conveyor = Conveyor(LED(conveyour_number))
 
-    def fire_and_conveyor(self):
-        self.button.wait_for_press()
-        self.fire_truck_and_conveyor()
-        sleep(self.destruction_wating_time)
+    class Conveyor:
+        def __init__(self):
+            self.on = self.conveyor.on
+            self.off = self.conveyor.off
 
-    def fire_truck_and_conveyor(self):
-        siren_time = 20  # Value
-
-        led_time = 0.5
-        siren_fig = int(siren_time / led_time)
-
-        mixer.init()
-        mixer.music.load(self.siren_mp3_path)  # 12sec
-        mixer.music.play(-1)
-        for i in range(siren_fig):
-            self.led_siren.on()
-            sleep(led_time)
-            self.led_siren.off()
-            sleep(led_time)
-            if i == 5:
-                self.motor_conveyor.on()
-        mixer.music.stop()
-        sleep(self.conveyor_time - siren_time)
-        self.motor_conveyor.off()
-
-    def conveyor(self):
+    class Siren(self):
         pass
 
+class Conveyor:
+    def __init__(self, motor_conveyor):
+        self.motor_conveyor = motor_conveyor
+        self.on = self.motor_conveyor.on
+        self.off = self.motor_conveyor.off
+
+
+class Siren:
+    def __init__(self, led_siren, audiofiles_dir):
+        self.led_siren = led_siren
+        self.mixer_siren = mixer
+        self.audiofiles_dir = audiofiles_dir
+
+    def on(self):
+        siren_mp3_path = path.join(self.audiofiles_dir, "ambulance-siren2.mp3")
+        self.mixer_siren.init()
+        self.mixer_siren.music.load(siren_mp3_path)  # 12sec
+        self.mixer_siren.music.play(-1)
+        self.led_siren.blink()
+
+    def off(self):
+        self.mixer_siren.music.stop()
+        self.led_siren.off()
 
 if __name__ == "__main__":
     print("start")
