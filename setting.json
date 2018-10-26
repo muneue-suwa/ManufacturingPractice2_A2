@@ -1,37 +1,37 @@
 {
     "fire_and_conveyor":{
         "describe_fire":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         },
         "describe_fire_truck":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         },
         "move_conveyor":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         },
         "destroy_coveyor":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         },
         "destroy_crane_time":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         },
         "remove_stopper":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         }
     },
     "explode_and_escape":{
         "describe_explosion":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         },
         "launch_balls":{
-            "beginning time":"",
+            "beginning_time":"",
             "operation time":""
         }
     }
