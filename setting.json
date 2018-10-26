@@ -1,6 +1,11 @@
 {
     "fire_and_conveyor":{
+        "describe_fire":{
+            "beginning time":"",
+            "operation time":""
+        },
         "describe_fire_truck":{
+            "beginning time":"",
             "operation time":""
         },
         "move_conveyor":{
