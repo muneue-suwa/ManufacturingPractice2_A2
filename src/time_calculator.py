@@ -21,8 +21,6 @@ def fire_and_conveyor_time():
              'move_conveyor_end': 0.0,
              'destroy_coveyor_start': 0.0,
              'destroy_coveyor_end': 0.0,
-             'destroy_crane_time_start': 0.0,
-             'destroy_crane_time_end': 0.0,
              'remove_stopper_start': 0.0,
              'remove_stopper_end': 0.0}
 
