@@ -13,26 +13,41 @@ setting_file = setting.setting_json
 
 
 def fire_and_conveyor_time():
-    times = {'describe_fire': {'start': 0.0, 'end': 0.0},
-             'describe_fire_truck': {'start': 0.0, 'end': 0.0},
-             'move_conveyor': {'start': 0.0, 'end': 0.0},
-             'destroy_coveyor': {'start': 0.0, 'end': 0.0},
-             'destroy_crane_time': {'start': 0.0, 'end': 0.0},
-             'remove_stopper': {'start': 0.0, 'end': 0.0}}
+    times = {'describe_fire_start': 0.0,
+             'describe_fire_end': 0.0,
+             'describe_fire_truck_start': 0.0,
+             'describe_fire_truck_end': 0.0,
+             'move_conveyor_start': 0.0,
+             'move_conveyor_end': 0.0,
+             'destroy_coveyor_start': 0.0,
+             'destroy_coveyor_end': 0.0,
+             'destroy_crane_time_start': 0.0,
+             'destroy_crane_time_end': 0.0,
+             'remove_stopper_start': 0.0,
+             'remove_stopper_end': 0.0}
 
     # setting_times = setting_file['fire_and_conveyor']
 
     for setting_times in setting_file['fire_and_conveyor']:
-        times[setting_times]['start'] =\
+        times['{}_start'.format(setting_times)] =\
             float(setting_file['fire_and_conveyor']
                   [setting_times]['beginning_time'])
-        times[setting_times]['end'] =\
+        times['{}_end'.format(setting_times)] =\
             float(setting_file['fire_and_conveyor']
                   [setting_times]['beginning_time'])\
             + float(setting_file['fire_and_conveyor']
                     [setting_times]['operation_time'])
 
-    return times
+    tmp_old_time = 0.0
+    wating_time_list = []
+    sorted_item_list = []
+    for item, time in sorted(times.items(), key=lambda x: x[1]):
+        wating_time_list.append(time - tmp_old_time)
+        sorted_item_list.append(item)
+        tmp_old_time = time
+
+    return {"wating_time_list": wating_time_list,
+            "sorted_item_list": sorted_item_list}
 
 
 """
