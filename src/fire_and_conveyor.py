@@ -6,6 +6,8 @@ Created on Wed Oct 24 20:32:34 2018
 @author: crantu
 """
 
+from time import sleep
+
 from siren import Siren
 from conveyor import Conveyor
 from fire import Fire
@@ -52,8 +54,8 @@ class FireAndConveyor:
 
     def main(self):
         for i in range(len(self.func)):
-            self.func[i]
-            self.wating_times[i]
+            self.func[i]()
+            sleep(self.wating_times[i])
 
 
 if __name__ == "__main__":
@@ -62,7 +64,7 @@ if __name__ == "__main__":
     led_fire_pin_fig = 16
 
     fc = FireAndConveyor(led_siren_pin=led_siren_pin_fig,
-                         audiofiles_dir="../../MP2_A2_audiofiles/",
+                         audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles",
                          motor_conveyor_pin=conveyour_pin_fig,
                          led_fire_pin=led_fire_pin_fig)
 
