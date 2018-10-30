@@ -59,12 +59,11 @@ class FireAndConveyor:
 if __name__ == "__main__":
     led_siren_pin_fig = 17
     conveyour_pin_fig = 18
+    led_fire_pin_fig = 16
 
-    conveyor = Conveyor(conveyour_pin_fig)
-    siren = Siren(led_siren_pin_fig, "../../MP2_A2_audiofiles/")
+    fc = FireAndConveyor(led_siren_pin=led_siren_pin_fig,
+                         audiofiles_dir="../../MP2_A2_audiofiles/",
+                         motor_conveyor_pin=conveyour_pin_fig,
+                         led_fire_pin=led_fire_pin_fig)
 
-    conveyor.on()
-    siren.on()
-    sleep(10)
-    siren.off()
-    conveyor.off()
+    fc.main()
