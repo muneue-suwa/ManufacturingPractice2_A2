@@ -46,8 +46,7 @@ def fire_and_conveyor_time():
         sorted_item_list.append(item)
         tmp_old_time = time
 
-    return {"wating_time_list": wating_time_list,
-            "sorted_item_list": sorted_item_list}
+    return sorted_item_list, wating_time_list
 
 
 """
