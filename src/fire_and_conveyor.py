@@ -16,6 +16,7 @@ from remove_stopper import RemoveStopper
 
 from time_calculator import fire_and_conveyor_time
 
+from sort_functions import SortFunctions
 # audiofiles_dir = "../../MP2_A2_audiofiles/"
 # siren_mp3 = "ambulance-siren2.mp3"
 
@@ -31,9 +32,6 @@ class FireAndConveyor:
         self.destroy_conveyor = DestroyCoveyor()  # temp
         self.remove_stopper = RemoveStopper()  # temp
 
-        self.sort_functions()
-
-    def sort_functions(self):
         sorted_items, self.wating_times = fire_and_conveyor_time()
 
         print(sorted_items)
@@ -48,9 +46,8 @@ class FireAndConveyor:
                      'remove_stopper_start': self.remove_stopper.on,
                      'remove_stopper_end': self.remove_stopper.off}
 
-        self.func = []
-        for item in sorted_items:
-            self.func.append(func_dict[item])
+        sortfunc = SortFunctions(sorted_items, func_dict)
+        self.func = sortfunc.func
 
     def main(self):
         for i in range(len(self.func)):

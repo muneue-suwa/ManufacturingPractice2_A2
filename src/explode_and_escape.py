@@ -6,48 +6,35 @@ Created on Wed Oct 24 20:48:40 2018
 @author: crantu
 """
 
-from pygame import mixer
-from gpiozero import LED
-from time import time
-from os import path
+from time import sleep
+
+from explode import Explode
+from escape import Escape
+
+from time_calculator import explode_and_escape_time
+from sort_functions import SortFunctions
 
 
-class Explode:
-    def __init__(self, led_explode_pin, audiofiles_dir):
-        self.led_explode = LED(led_explode_pin)
-        self.mixer_explode = mixer
-        self.audiofiles_dir = audiofiles_dir
+class ExplodeAndEscape:
+    def __init__(self, led_explode_pin, audiofiles_dir,
+                 motor_escape_pin):
+        self.explode = Explode(led_explode_pin=led_explode_pin,
+                               audiofiles_dir=audiofiles_dir)
+        self.escape = Escape(motor_escape_pin=motor_escape_pin)
+        ######
+        sorted_items, self.wating_times = explode_and_escape_time()
 
-    def on(self):
-        start_time = time()
-        siren_mp3_path = path.join(self.audiofiles_dir, "bomb1.mp3")
-        self.mixer_explode.init()
-        self.mixer_explode.music.load(siren_mp3_path)
-        self.mixer_explode.music.play(1)
-        self.led_explode.blink()
-        print("siren on")
-        return time() - start_time
+        print(sorted_items)
 
-    def off(self):
-        start_time = time()
-        self.mixer_explode.music.stop()
-        self.led_explode.off()
-        print("siren off")
-        return time() - start_time
+        func_dict = {'describe_explosion_start': self.explode.on,
+                     'describe_explosion_end': self.explode.off,
+                     'launch_balls_start': self.escape.on,
+                     'launch_balls_end': self.escape.off}
 
+        sortfunc = SortFunctions(sorted_items, func_dict)
+        self.func = sortfunc.func
 
-class Escape:
-    def __init__(self, motor_escape_pin):
-        self.motor_escape = LED(motor_escape_pin)
-
-    def on(self):
-        start_time = time()
-        self.motor_escape.on()
-        print("escape on")
-        return time() - start_time
-
-    def off(self):
-        start_time = time()
-        self.motor_escape.off()
-        print("escape off")
-        return time() - start_time
+    def main(self):
+        for i in range(len(self.func)):
+            self.func[i]()
+            sleep(self.wating_times[i])

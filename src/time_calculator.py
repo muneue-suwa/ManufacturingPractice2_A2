@@ -24,22 +24,35 @@ def fire_and_conveyor_time():
              'remove_stopper_start': 0.0,
              'remove_stopper_end': 0.0}
 
-    # setting_times = setting_file['fire_and_conveyor']
+    return time_calculator_common(times_dict=times,
+                                  json_object_key_name='fire_and_conveyor')
 
-    for setting_times in setting_file['fire_and_conveyor']:
-        times['{}_start'.format(setting_times)] =\
-            float(setting_file['fire_and_conveyor']
+
+def explode_and_escape_time():
+    times = {'describe_explosion_start': 0.0,
+             'describe_explosion_end': 0.0,
+             'launch_balls_start': 0.0,
+             'launch_balls_end': 0.0}
+
+    return time_calculator_common(times_dict=times,
+                                  json_object_key_name='explode_and_escape')
+
+
+def time_calculator_common(times_dict, json_object_key_name):
+    for setting_times in setting_file[json_object_key_name]:
+        times_dict['{}_start'.format(setting_times)] =\
+            float(setting_file[json_object_key_name]
                   [setting_times]['beginning_time'])
-        times['{}_end'.format(setting_times)] =\
-            float(setting_file['fire_and_conveyor']
+        times_dict['{}_end'.format(setting_times)] =\
+            float(setting_file[json_object_key_name]
                   [setting_times]['beginning_time'])\
-            + float(setting_file['fire_and_conveyor']
+            + float(setting_file[json_object_key_name]
                     [setting_times]['operation_time'])
 
     tmp_old_time = 0.0
     wating_time_list = []
     sorted_item_list = []
-    for item, time in sorted(times.items(), key=lambda x: x[1]):
+    for item, time in sorted(times_dict.items(), key=lambda x: x[1]):
         wating_time_list.append(time - tmp_old_time)
         sorted_item_list.append(item)
         tmp_old_time = time
