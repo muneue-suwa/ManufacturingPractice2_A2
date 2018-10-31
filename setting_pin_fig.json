@@ -1,0 +1,24 @@
+{
+    "led":{
+        "describe_fire":"17", 
+        "describe_fire_truck":"18",
+        "move_conveyor":"",
+        "destroy_coveyor":"",
+        "remove_stopper":"",
+        "describe_explosion":"19",
+        "launch_balls":""
+    },    
+    "motor":{
+        "describe_fire":"17", 
+        "describe_fire_truck":"18",
+        "move_conveyor":"",
+        "destroy_coveyor":"",
+        "remove_stopper":"",
+        "describe_explosion":"19",
+        "launch_balls":""
+    },
+    "button":{
+        "first_button":"",
+        "second_button":""
+    }
+}

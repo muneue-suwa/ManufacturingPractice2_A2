@@ -17,7 +17,8 @@ $ tree ~/Git
     ├── manuals
     │   ├── gdrive_manual.md
     │   └── rpi_manual.md
-    ├── setting.json
+    ├── setting_time.json
+    ├── setting_pin_fig.json
     ├── src
     │   ├── explode_and_escape.py
     │   └── fire_and_conveyor.py

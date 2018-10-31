@@ -1,0 +1,34 @@
+{
+    "fire_and_conveyor":{
+        "describe_fire":{
+            "beginning_time":"0",
+            "operation_time":"2"
+        },
+        "describe_fire_truck":{
+            "beginning_time":"3",
+            "operation_time":"6"
+        },
+        "move_conveyor":{
+            "beginning_time":"5",
+            "operation_time":"8"
+        },
+        "destroy_coveyor":{
+            "beginning_time":"2",
+            "operation_time":"5"
+        },
+        "remove_stopper":{
+            "beginning_time":"6",
+            "operation_time":"1"
+        }
+    },
+    "explode_and_escape":{
+        "describe_explosion":{
+            "beginning_time":"",
+            "operation_time":""
+        },
+        "launch_balls":{
+            "beginning_time":"",
+            "operation_time":""
+        }
+    }
+}
