@@ -23,12 +23,12 @@
     },
     "explode_and_escape":{
         "describe_explosion":{
-            "beginning_time":"",
-            "operation_time":""
+            "beginning_time":"3",
+            "operation_time":"8"
         },
         "launch_balls":{
-            "beginning_time":"",
-            "operation_time":""
+            "beginning_time":"2",
+            "operation_time":"3"
         }
     }
 }

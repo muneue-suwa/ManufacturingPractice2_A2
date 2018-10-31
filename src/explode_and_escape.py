@@ -38,3 +38,7 @@ class ExplodeAndEscape:
         for i in range(len(self.func)):
             self.func[i]()
             sleep(self.wating_times[i])
+
+if __name__ == "__main__":
+    ee = ExplodeAndEscape(17, "../../MP2_A2_audiofiles/AudioFiles",18)
+    ee.main()
