@@ -11,6 +11,8 @@ from gpiozero import LED
 from time import time
 from os import path
 
+from read_setting_json import Setting
+
 
 class Siren:
     def __init__(self, led_siren_pin, audiofiles_dir):
@@ -35,3 +37,12 @@ class Siren:
         self.led_siren.off()
         print("siren off")
         return time() - start_time
+
+
+if __name__ == "__main__":
+    setting = Setting()
+    siren = Siren(led_siren_pin=17,
+                  audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles/")
+    siren.on()
+    setting.setting_json['describe_fire_truck']['operation_time']
+    siren.off()
