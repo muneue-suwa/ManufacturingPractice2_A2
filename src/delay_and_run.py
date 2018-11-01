@@ -14,8 +14,9 @@ class DelayAndRun:
         self.start_time = time()
 
     def delay_and_run(self, func, wating_time, before_execution_time):
-        if wating_time - before_execution_time > 0:
-            sleep(wating_time - before_execution_time)
+        wating_time -= before_execution_time
+        if wating_time > 0:
+            sleep(wating_time)
 
         old_time = time()
         print("{:.3f} sec: ".format(time() - self.start_time), end="")
