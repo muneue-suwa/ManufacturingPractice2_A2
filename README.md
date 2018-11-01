@@ -12,17 +12,27 @@ $ tree ~/Git
 │       └── *.mp3  # Audio files
 └─── ManufacturingPractice2_A2
     ├── README.md
-    ├── crontab_mp2_setting
     ├── main.py
     ├── manuals
-    │   ├── gdrive_manual.md
-    │   └── rpi_manual.md
-    ├── setting_time.json  # the new file name of setting.json
-    ├── setting_pin_fig.json
-    ├── src
-    │   ├── explode_and_escape.py
-    │   └── fire_and_conveyor.py
-    └── test_code.py
+    │   └── *_manual.md
+    ├── setting_files
+    │   ├── crontab_mp2_setting
+    │   ├── setting_pin_fig.json
+    │   └── setting_time.json
+    └── src
+        ├── conveyor.py
+        ├── delay_and_run.py
+        ├── destroy_coveyor.py
+        ├── escape.py
+        ├── explode.py
+        ├── explode_and_escape.py
+        ├── fire.py
+        ├── fire_and_conveyor.py
+        ├── read_setting_json.py
+        ├── remove_stopper.py
+        ├── siren.py
+        ├── sort_functions.py
+        └── time_calculator.py
 ```
 
 ## 動作環境
@@ -53,7 +63,7 @@ $ sudo apt install python3-pygame python3-gpiozero
 
 ### 自動起動の設定
 ```
-$ crontab ~/Git/ManufacturingPractice2_A2/crontab_mp2_setting
+$ crontab ~/Git/ManufacturingPractice2_A2/setting_files/crontab_mp2_setting
 ```
 
 ### PinOut
