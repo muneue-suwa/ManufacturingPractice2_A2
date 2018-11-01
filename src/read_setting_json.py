@@ -20,7 +20,7 @@ class Setting:
         self.setting_json = self.json_to_dict()
 
     def json_to_dict(self):
-        with open("../setting.json", "r") as f:
+        with open("../setting_files/setting_time.json", "r") as f:
             setting_data = json.load(f)
         return setting_data
 
