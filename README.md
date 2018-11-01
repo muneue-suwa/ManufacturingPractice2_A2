@@ -77,7 +77,7 @@ $ crontab ~/Git/ManufacturingPractice2_A2/crontab_mp2_setting
         1. 音（爆発音）と光（LED2）：**開始時間**，**動作時間**
         1. ジャンプ（モータ4）：**開始時間**，**動作時間**
 
-**太字**: setting.json
+**太字**: setting_time.json
 
 ### 注意事項
 - 開始時間はすべて `センサー` を基準にする．（動作部がボールの動きと一致しないため）
