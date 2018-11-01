@@ -52,7 +52,7 @@ GPIO26 (37) (38) GPIO20
 
 For further information, please refer to https://pinout.xyz/
 ```
-![rpi-pinout](manuals/raspberry-pi-pinout.png)
+![rpi-pinout](raspberry-pi-pinout.png)
 reference: [https://pinout.xyz/](https://pinout.xyz/)
 
 ## 今回使用するpin
