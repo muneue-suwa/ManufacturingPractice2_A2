@@ -16,3 +16,14 @@ Simple mixer control 'PCM',0
 ```shell-session:amixer_音量の調節
 $ sudo amixer sset PCM [n]%
 ```
+
+## mp3ファイルの再生方法
+`mpg123` または `mpg321` コマンドを使用する．ただし，アップデートが続けられている `mpg123` の使用を推奨する．
+### インストール
+```
+$ sudo apt install mpg123
+```
+### 再生
+```
+$ mpg123 hoge.mp3
+```

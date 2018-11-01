@@ -56,6 +56,9 @@ $ sudo apt install python3-pygame python3-gpiozero
 $ crontab ~/Git/ManufacturingPractice2_A2/crontab_mp2_setting
 ```
 
+### PinOut
+詳細は [rpi-pinout_manual.md](manuals/rpi-pinout_manual.md) を参照すること．
+
 ### その他のRaspberry PIの設定方法
 詳細は [rpi_manual](manuals/rpi_manual.md) を参照すること．
 
@@ -81,6 +84,7 @@ $ crontab ~/Git/ManufacturingPractice2_A2/crontab_mp2_setting
 
 ## その他のマニュアル
 - モータドライバについて：[tb6612fng_manual](manuals/tb6612fng_manual.md) を参照すること
+- Debug 時などに使えるUbuntuのコマンドなど：[ubuntu_manual](manuals/ubuntu_manual)を参照すること
 
 ## 参考文献
 [Raspberry Piで音楽(wav/mp3)ファイルを再生する方法 python編](https://qiita.com/Nyanpy/items/cb4ea8dc4dc01fe56918)
