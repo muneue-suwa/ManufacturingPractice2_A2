@@ -16,7 +16,7 @@ from time_calculator import fire_and_conveyor_time
 
 from sort_functions import SortFunctions
 
-from delay_and_run import delay_and_run
+from delay_and_run import DelayAndRun
 # audiofiles_dir = "../../MP2_A2_audiofiles/"
 # siren_mp3 = "ambulance-siren2.mp3"
 
@@ -51,11 +51,12 @@ class FireAndConveyor:
 
     def main(self):
         temp_execution_time = 0.0
+        dar = DelayAndRun()
         for i in range(len(self.func)):
             temp_execution_time =\
-                delay_and_run(func=self.func[i],
-                              wating_time=self.wating_times[i],
-                              before_execution_time=temp_execution_time)
+                dar.delay_and_run(func=self.func[i],
+                                  wating_time=self.wating_times[i],
+                                  before_execution_time=temp_execution_time)
 
 
 if __name__ == "__main__":
