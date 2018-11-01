@@ -6,13 +6,13 @@ Created on Wed Oct 24 20:48:40 2018
 @author: crantu
 """
 
-from time import sleep
-
 from explode import Explode
 from escape import Escape
 
 from time_calculator import explode_and_escape_time
 from sort_functions import SortFunctions
+
+from delay_and_run import delay_and_run
 
 
 class ExplodeAndEscape:
@@ -35,9 +35,12 @@ class ExplodeAndEscape:
         self.func = sortfunc.func
 
     def main(self):
+        temp_execution_time = 0.0
         for i in range(len(self.func)):
-            self.func[i]()
-            sleep(self.wating_times[i])
+            temp_execution_time =\
+                delay_and_run(func=self.func[i],
+                              wating_time=self.wating_times[i],
+                              before_execution_time=temp_execution_time)
 
 
 if __name__ == "__main__":
