@@ -8,8 +8,8 @@ Created on Fri Oct 26 22:56:09 2018
 
 from pprint import pprint
 from read_setting_json import Setting
-setting = Setting()
-setting_file = setting.setting_json
+setting_time = Setting("time")
+setting_file = setting_time.setting_json
 
 
 def fire_and_conveyor_time():
@@ -81,5 +81,4 @@ def time_calculator_common(times_dict, json_object_key_name):
 
 
 if __name__ == "__main__":
-    setting = Setting()
     pprint(fire_and_conveyor_time())
