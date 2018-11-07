@@ -29,5 +29,7 @@ if __name__ == "__main__":
     setting_time = Setting("time")
     conveyor = Conveyor(int(pin_fig.setting_json["motor"]["move_conveyor"]))
     conveyor.on()
-    sleep(float(setting_time.setting_json["fire_and_conveyor"]["move_conveyor"]["operation_time"]))
+    sleep(float(setting_time.setting_json["fire_and_conveyor"]
+                                         ["move_conveyor"]
+                                         ["operation_time"]))
     conveyor.off()

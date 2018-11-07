@@ -39,5 +39,6 @@ if __name__ == "__main__":
                       "../../MP2_A2_audiofiles/AudioFiles/")
     explode.on()
     sleep(int(setting_time.setting_json["explode_and_escape"]
-                                   ["describe_explosion"]["operation_time"]))
+                                       ["describe_explosion"]
+                                       ["operation_time"]))
     explode.off()

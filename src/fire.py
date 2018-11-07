@@ -30,5 +30,6 @@ if __name__ == "__main__":
     fire = Fire(int(pin_fig.setting_json["led"]["describe_fire"]))
     fire.on()
     sleep(float(setting_time.setting_json["fire_and_conveyor"]
-                      ["describe_fire"]["operation_time"]))
+                                         ["describe_fire"]
+                                         ["operation_time"]))
     fire.off()

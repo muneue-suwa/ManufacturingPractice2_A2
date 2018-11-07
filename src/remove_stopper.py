@@ -25,4 +25,5 @@ if __name__ == "__main__":
     setting_time = Setting("time")
     pin_fig.setting_json["motor"]["remove_stopper"]
     sleep(float(setting_time.setting_json["fire_and_conveyor"]
-                                   ["remove_stopper"]["operation_time"]))
+                                         ["remove_stopper"]
+                                         ["operation_time"]))
