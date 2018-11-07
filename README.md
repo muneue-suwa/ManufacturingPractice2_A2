@@ -19,20 +19,22 @@ $ tree ~/Git
     │   ├── crontab_mp2_setting
     │   ├── setting_pin_fig.json
     │   └── setting_time.json
-    └── src
-        ├── conveyor.py
-        ├── delay_and_run.py
-        ├── destroy_coveyor.py
-        ├── escape.py
-        ├── explode.py
-        ├── explode_and_escape.py
-        ├── fire.py
-        ├── fire_and_conveyor.py
-        ├── read_setting_json.py
-        ├── remove_stopper.py
-        ├── siren.py
-        ├── sort_functions.py
-        └── time_calculator.py
+    ├── src
+    │   ├── conveyor.py
+    │   ├── delay_and_run.py
+    │   ├── destroy_coveyor.py
+    │   ├── escape.py
+    │   ├── explode.py
+    │   ├── explode_and_escape.py
+    │   ├── fire.py
+    │   ├── fire_and_conveyor.py
+    │   ├── read_setting_json.py
+    │   ├── remove_stopper.py
+    │   ├── siren.py
+    │   ├── sort_functions.py
+    │   └── time_calculator.py
+    └── test
+        └── audiotest.py
 ```
 
 ## 動作環境
@@ -101,7 +103,7 @@ $ crontab ~/Git/ManufacturingPractice2_A2/setting_files/crontab_mp2_setting
 
 [google drive を コマンドから使うgdrive が早くて便利](http://takuya-1st.hatenablog.jp/entry/2016/07/06/034412)
 
-[RaspberryPi 3 コマンドで音量を上げる（ラジオをテレビで再生→音量不足→コマンドで音量U](http://min117.hatenablog.com/entry/2017/06/22/212425)
+[RaspberryPi 3 コマンドで音量を上げる（ラジオをテレビで再生→音量不足→コマンドで音量UP）](http://min117.hatenablog.com/entry/2017/06/22/212425)
 
 ## 音源
 [効果音ラボ](https://soundeffect-lab.info/)
