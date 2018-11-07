@@ -7,14 +7,27 @@ Created on Wed Oct 24 20:56:58 2018
 """
 
 from gpiozero import Button
+from os import path
 
-import src.fire_and_conveyor
-import src.explode_and_escape
-import src.read_setting_json
+from src.fire_and_conveyor import FireAndConveyor
+from src.explode_and_escape import ExplodeAndEscape
+from src.read_setting_json import Setting as mp2Setting
 
-fc = src.fire_and_conveyor.FireAndConveyor()
-ee = src.explode_and_escape.ExplodeAndEscape()
-pinfig = src.read_setting_json.Setting("pin_fig")
+audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
+pinfig = mp2Setting("pin_fig")
+fc = FireAndConveyor(led_siren_pin=pinfig.setting_json["led"]
+                                                      ["describe_fire_truck"],
+                     audiofiles_dir=audiodir,
+                     motor_conveyor_pin=pinfig.setting_json["motor"]
+                                                           ["move_conveyor"],
+                     led_fire_pin=pinfig.setting_json["led"]["describe_fire"])
+ee =\
+    ExplodeAndEscape(led_explode_pin=pinfig.setting_json["led"]
+                                                        ["describe_explosion"],
+                     audiofiles_dir=audiodir,
+                     motor_escape_pin=pinfig.setting_json["motor"]
+                                                         ["launch_balls"])
+
 
 button_pin = pinfig.setting_json["button"]
 first_button = Button(button_pin["first_button"])
