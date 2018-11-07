@@ -57,5 +57,15 @@ reference: [https://pinout.xyz/](https://pinout.xyz/)
 
 ## 今回使用するpin
 - LED
+    - describe_fire: 4
+    - describe_fire_truck: 17
+    - describe_explosion: 18
 - Motor
+    - move_conveyor: 5
+    - destroy_coveyor: 6
+    - remove_stopper: 12
+    - describe_explosion: 13
+    - launch_balls: 16
 - Button
+    - first_button: 27
+    - second_button: 22
