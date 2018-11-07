@@ -33,10 +33,10 @@ second_button = Button(int(button_pin["second_button"]))
 
 def main():
     first_button.wait_for_press()
-    fc.fire_and_conveyor()
+    fc.main()
 
     second_button.wait_for_press()
-    ee.explode_and_escape()
+    ee.main()
 
 
 if __name__ == "__main__":
