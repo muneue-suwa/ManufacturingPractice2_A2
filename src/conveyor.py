@@ -7,7 +7,6 @@ Created on Tue Oct 30 23:36:10 2018
 """
 
 from gpiozero import LED
-from time import time
 
 
 class Conveyor:
@@ -15,13 +14,20 @@ class Conveyor:
         self.motor_conveyor = LED(motor_conveyor_pin)
 
     def on(self):
-        start_time = time()
         self.motor_conveyor.on()
         print("conveyor on")
-        return time() - start_time
 
     def off(self):
-        start_time = time()
         self.motor_conveyor.off()
         print("conveyor off")
-        return time() - start_time
+
+
+if __name__ == "__main__":
+    from read_setting_json import Setting
+    from time import sleep
+    pin_fig = Setting("pin")
+    setting_time = Setting("time")
+    conveyor = Conveyor(pin_fig["motor"]["move_conveyor"])
+    conveyor.on()
+    sleep(setting_time["fire_and_conveyor"]["move_conveyor"]["operation_time"])
+    conveyor.off()

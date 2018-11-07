@@ -8,10 +8,7 @@ Created on Tue Oct 30 23:35:37 2018
 
 from pygame import mixer
 from gpiozero import LED
-from time import time
 from os import path
-
-from read_setting_json import Setting
 
 
 class Siren:
@@ -21,7 +18,6 @@ class Siren:
         self.audiofiles_dir = audiofiles_dir
 
     def on(self):
-        start_time = time()
         siren_mp3_path = path.join(self.audiofiles_dir,
                                    "ambulance-siren2.mp3")
         self.mixer_siren.init()
@@ -29,20 +25,20 @@ class Siren:
         self.mixer_siren.music.play(-1)
         self.led_siren.blink()
         print("siren on")
-        return time() - start_time
 
     def off(self):
-        start_time = time()
         self.mixer_siren.music.stop()
         self.led_siren.off()
         print("siren off")
-        return time() - start_time
 
 
 if __name__ == "__main__":
-    setting = Setting()
-    siren = Siren(led_siren_pin=17,
+    from read_setting_json import Setting
+    from time import sleep
+    setting_time = Setting("time")
+    pin_fig = Setting("pin")
+    siren = Siren(led_siren_pin=pin_fig["led"]["describe_fire_truck"],
                   audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles/")
     siren.on()
-    setting.setting_json['describe_fire_truck']['operation_time']
+    sleep(setting_time.setting_json['describe_fire_truck']['operation_time'])
     siren.off()

@@ -7,7 +7,6 @@ Created on Wed Oct 31 09:29:47 2018
 """
 from pygame import mixer
 from gpiozero import LED
-from time import time
 from os import path
 
 
@@ -18,18 +17,27 @@ class Explode:
         self.audiofiles_dir = audiofiles_dir
 
     def on(self):
-        start_time = time()
         siren_mp3_path = path.join(self.audiofiles_dir, "bomb1.mp3")
         self.mixer_explode.init()
         self.mixer_explode.music.load(siren_mp3_path)
         self.mixer_explode.music.play(1)
         self.led_explode.blink()
         print("siren on")
-        return time() - start_time
 
     def off(self):
-        start_time = time()
         self.mixer_explode.music.stop()
         self.led_explode.off()
         print("siren off")
-        return time() - start_time
+
+
+if __name__ == "__main__":
+    from read_setting_json import Setting
+    from time import sleep
+    pin_fig = Setting("pin")
+    setting_time = Setting("time")
+    explode = Explode(pin_fig.setting_json["led"]["describe_explosion"],
+                      "../../MP2_A2_audiofiles/AudioFiles/")
+    explode.on()
+    sleep(setting_time.setting_json["explode_and_escape"]
+                                   ["describe_explosion"]["operation_time"])
+    explode.off()

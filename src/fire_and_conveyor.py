@@ -13,7 +13,6 @@ from destroy_coveyor import DestroyCoveyor
 from remove_stopper import RemoveStopper
 
 from time_calculator import fire_and_conveyor_time
-
 from sort_functions import SortFunctions
 
 from delay_and_run import DelayAndRun
@@ -60,9 +59,11 @@ class FireAndConveyor:
 
 
 if __name__ == "__main__":
-    led_siren_pin_fig = 17
-    conveyour_pin_fig = 18
-    led_fire_pin_fig = 16
+    from read_setting_json import Setting
+    pin_fig = Setting("pin")
+    led_siren_pin_fig = pin_fig.setting_json["led"]["describe_fire_truck"]
+    conveyour_pin_fig = pin_fig.setting_json["motor"]["move_conveyor"]
+    led_fire_pin_fig = pin_fig.setting_json["led"]["describe_fire"]
 
     fc = FireAndConveyor(led_siren_pin=led_siren_pin_fig,
                          audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles",

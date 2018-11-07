@@ -10,12 +10,15 @@ from gpiozero import Button
 
 import src.fire_and_conveyor
 import src.explode_and_escapse
+import src.read_setting_json
 
 fc = src.fire_and_conveyor.FireAndConveyor()
 ee = src.explode_and_escape.ExplodeAndEscape()
+pinfig = src.read_setting_json.Setting("pin_fig")
 
-first_button = Button(3)
-second_button = Button(4)
+button_pin = pinfig.setting_json["button"]
+first_button = Button(button_pin["first_button"])
+second_button = Button(button_pin["second_button"])
 
 
 def main():

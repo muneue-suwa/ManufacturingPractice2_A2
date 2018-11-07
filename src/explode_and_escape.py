@@ -45,5 +45,9 @@ class ExplodeAndEscape:
 
 
 if __name__ == "__main__":
-    ee = ExplodeAndEscape(17, "../../MP2_A2_audiofiles/AudioFiles", 18)
+    from read_setting_json import Setting
+    pin_fig = Setting("pin")
+    ee = ExplodeAndEscape(pin_fig["led"]["describe_explosion"],
+                          "../../MP2_A2_audiofiles/AudioFiles",
+                          pin_fig["motor"]["describe_explosion"])
     ee.main()

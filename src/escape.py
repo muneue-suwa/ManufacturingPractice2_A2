@@ -7,7 +7,6 @@ Created on Wed Oct 31 09:32:36 2018
 """
 
 from gpiozero import LED
-from time import time
 
 
 class Escape:
@@ -15,13 +14,21 @@ class Escape:
         self.motor_escape = LED(motor_escape_pin)
 
     def on(self):
-        start_time = time()
         self.motor_escape.on()
         print("escape on")
-        return time() - start_time
 
     def off(self):
-        start_time = time()
         self.motor_escape.off()
         print("escape off")
-        return time() - start_time
+
+
+if __name__ == "__main__":
+    from read_setting_json import Setting
+    from time import sleep
+    pin_fig = Setting("pin")
+    setting_time = Setting("time")
+    escape =\
+        Escape(motor_escape_pin=pin_fig.setting_json["motor"]["launch_balls"])
+    escape.on()
+    sleep(setting_time["explode_and_escape"]["launch_balls"]["operation_time"])
+    escape.off()
