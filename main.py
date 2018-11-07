@@ -27,8 +27,8 @@ ee = ExplodeAndEscape(led_explode_pin=int(led_pin["describe_explosion"]),
 
 
 button_pin = pinfig.setting_json["button"]
-first_button = Button(button_pin["first_button"])
-second_button = Button(button_pin["second_button"])
+first_button = Button(int(button_pin["first_button"]))
+second_button = Button(int(button_pin["second_button"]))
 
 
 def main():
