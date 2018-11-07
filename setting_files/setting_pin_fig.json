@@ -1,24 +1,24 @@
 {
     "led":{
-        "describe_fire":"17", 
-        "describe_fire_truck":"18",
-        "move_conveyor":"",
-        "destroy_coveyor":"",
-        "remove_stopper":"",
-        "describe_explosion":"19",
-        "launch_balls":""
+        "describe_fire":"4", 
+        "describe_fire_truck":"17",
+        "move_conveyor":null,
+        "destroy_coveyor":null,
+        "remove_stopper":null,
+        "describe_explosion":"18",
+        "launch_balls":null
     },    
     "motor":{
-        "describe_fire":"17", 
-        "describe_fire_truck":"18",
-        "move_conveyor":"",
-        "destroy_coveyor":"",
-        "remove_stopper":"",
-        "describe_explosion":"19",
-        "launch_balls":""
+        "describe_fire":null, 
+        "describe_fire_truck":null,
+        "move_conveyor":"5",
+        "destroy_coveyor":"6",
+        "remove_stopper":"12",
+        "describe_explosion":"13",
+        "launch_balls":"16"
     },
     "button":{
-        "first_button":"",
-        "second_button":""
+        "first_button":"27",
+        "second_button":"22"
     }
 }
