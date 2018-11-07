@@ -43,16 +43,21 @@ def time_calculator_common(times_dict, json_object_key_name):
         times_dict['{}_start'.format(setting_times)] =\
             float(setting_file[json_object_key_name]
                   [setting_times]['beginning_time'])
-        times_dict['{}_end'.format(setting_times)] =\
-            float(setting_file[json_object_key_name]
-                  [setting_times]['beginning_time'])\
-            + float(setting_file[json_object_key_name]
-                    [setting_times]['operation_time'])
+        if setting_file[json_object_key_name][setting_times]['operation_time']:
+            times_dict['{}_end'.format(setting_times)] =\
+                float(setting_file[json_object_key_name]
+                      [setting_times]['beginning_time'])\
+                + float(setting_file[json_object_key_name]
+                        [setting_times]['operation_time'])
+        else:
+            times_dict['{}_end'.format(setting_times)] = -1.0
 
     tmp_old_time = 0.0
     wating_time_list = []
     sorted_item_list = []
     for item, time in sorted(times_dict.items(), key=lambda x: x[1]):
+        if time < 0:
+            continue
         wating_time_list.append(time - tmp_old_time)
         sorted_item_list.append(item)
         tmp_old_time = time
