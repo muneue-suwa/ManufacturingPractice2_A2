@@ -37,8 +37,8 @@ if __name__ == "__main__":
     from time import sleep
     setting_time = Setting("time")
     pin_fig = Setting("pin")
-    siren = Siren(led_siren_pin=pin_fig["led"]["describe_fire_truck"],
+    siren = Siren(led_siren_pin=int(pin_fig.setting_json["led"]["describe_fire_truck"]),
                   audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles/")
     siren.on()
-    sleep(setting_time.setting_json['describe_fire_truck']['operation_time'])
+    sleep(float(setting_time.setting_json['fire_and_conveyor']['describe_fire_truck']['operation_time']))
     siren.off()

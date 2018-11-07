@@ -6,16 +6,16 @@ Created on Wed Oct 24 20:32:34 2018
 @author: crantu
 """
 
-from siren import Siren
-from conveyor import Conveyor
-from fire import Fire
-from destroy_coveyor import DestroyCoveyor
-from remove_stopper import RemoveStopper
+from .siren import Siren
+from .conveyor import Conveyor
+from .fire import Fire
+from .destroy_coveyor import DestroyCoveyor
+from .remove_stopper import RemoveStopper
 
-from time_calculator import fire_and_conveyor_time
-from sort_functions import SortFunctions
+from .time_calculator import fire_and_conveyor_time
+from .sort_functions import SortFunctions
 
-from delay_and_run import DelayAndRun
+from .delay_and_run import DelayAndRun
 # audiofiles_dir = "../../MP2_A2_audiofiles/"
 # siren_mp3 = "ambulance-siren2.mp3"
 
@@ -61,9 +61,9 @@ class FireAndConveyor:
 if __name__ == "__main__":
     from read_setting_json import Setting
     pin_fig = Setting("pin")
-    led_siren_pin_fig = pin_fig.setting_json["led"]["describe_fire_truck"]
-    conveyour_pin_fig = pin_fig.setting_json["motor"]["move_conveyor"]
-    led_fire_pin_fig = pin_fig.setting_json["led"]["describe_fire"]
+    led_siren_pin_fig = int(pin_fig.setting_json["led"]["describe_fire_truck"])
+    conveyour_pin_fig = int(pin_fig.setting_json["motor"]["move_conveyor"])
+    led_fire_pin_fig = int(pin_fig.setting_json["led"]["describe_fire"])
 
     fc = FireAndConveyor(led_siren_pin=led_siren_pin_fig,
                          audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles",

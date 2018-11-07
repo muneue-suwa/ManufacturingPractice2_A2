@@ -35,9 +35,9 @@ if __name__ == "__main__":
     from time import sleep
     pin_fig = Setting("pin")
     setting_time = Setting("time")
-    explode = Explode(pin_fig.setting_json["led"]["describe_explosion"],
+    explode = Explode(int(pin_fig.setting_json["led"]["describe_explosion"]),
                       "../../MP2_A2_audiofiles/AudioFiles/")
     explode.on()
-    sleep(setting_time.setting_json["explode_and_escape"]
-                                   ["describe_explosion"]["operation_time"])
+    sleep(int(setting_time.setting_json["explode_and_escape"]
+                                   ["describe_explosion"]["operation_time"]))
     explode.off()

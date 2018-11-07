@@ -9,7 +9,7 @@ Created on Wed Oct 24 20:56:58 2018
 from gpiozero import Button
 
 import src.fire_and_conveyor
-import src.explode_and_escapse
+import src.explode_and_escape
 import src.read_setting_json
 
 fc = src.fire_and_conveyor.FireAndConveyor()

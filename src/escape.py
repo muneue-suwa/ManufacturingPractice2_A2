@@ -28,7 +28,7 @@ if __name__ == "__main__":
     pin_fig = Setting("pin")
     setting_time = Setting("time")
     escape =\
-        Escape(motor_escape_pin=pin_fig.setting_json["motor"]["launch_balls"])
+        Escape(motor_escape_pin=int(pin_fig.setting_json["motor"]["launch_balls"]))
     escape.on()
-    sleep(setting_time["explode_and_escape"]["launch_balls"]["operation_time"])
+    sleep(int(setting_time.setting_json["explode_and_escape"]["launch_balls"]["operation_time"]))
     escape.off()

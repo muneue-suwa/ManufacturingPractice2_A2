@@ -6,13 +6,13 @@ Created on Wed Oct 24 20:48:40 2018
 @author: crantu
 """
 
-from explode import Explode
-from escape import Escape
+from .explode import Explode
+from .escape import Escape
 
-from time_calculator import explode_and_escape_time
-from sort_functions import SortFunctions
+from .time_calculator import explode_and_escape_time
+from .sort_functions import SortFunctions
 
-from delay_and_run import DelayAndRun
+from .delay_and_run import DelayAndRun
 
 
 class ExplodeAndEscape:
@@ -47,7 +47,7 @@ class ExplodeAndEscape:
 if __name__ == "__main__":
     from read_setting_json import Setting
     pin_fig = Setting("pin")
-    ee = ExplodeAndEscape(pin_fig["led"]["describe_explosion"],
+    ee = ExplodeAndEscape(int(pin_fig.setting_json["led"]["describe_explosion"]),
                           "../../MP2_A2_audiofiles/AudioFiles",
-                          pin_fig["motor"]["describe_explosion"])
+                          int(pin_fig.setting_json["motor"]["describe_explosion"]))
     ee.main()

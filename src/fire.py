@@ -27,8 +27,8 @@ if __name__ == "__main__":
     from time import sleep
     pin_fig = Setting("pin")
     setting_time = Setting("time")
-    fire = Fire(pin_fig["led"]["describe_fire"])
+    fire = Fire(int(pin_fig.setting_json["led"]["describe_fire"]))
     fire.on()
-    sleep(setting_time["fire_and_conveyor"]
-                      ["describe_fire"]["operation_time"])
+    sleep(float(setting_time.setting_json["fire_and_conveyor"]
+                      ["describe_fire"]["operation_time"]))
     fire.off()
