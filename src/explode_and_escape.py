@@ -16,11 +16,9 @@ from .delay_and_run import DelayAndRun
 
 
 class ExplodeAndEscape:
-    def __init__(self, led_explode_pin, audiofiles_dir,
-                 motor_escape_pin):
-        self.explode = Explode(led_explode_pin=led_explode_pin,
-                               audiofiles_dir=audiofiles_dir)
-        self.escape = Escape(motor_escape_pin=motor_escape_pin)
+    def __init__(self, audiofiles_dir):
+        self.explode = Explode(audiofiles_dir=audiofiles_dir)
+        self.escape = Escape()
         ######
         sorted_items, self.wating_times = explode_and_escape_time()
 
@@ -45,12 +43,5 @@ class ExplodeAndEscape:
 
 
 if __name__ == "__main__":
-    from read_setting_json import Setting
-    pin_fig = Setting("pin")
-    ee =\
-        ExplodeAndEscape(int(pin_fig.setting_json["led"]
-                                                 ["describe_explosion"]),
-                         "../../MP2_A2_audiofiles/AudioFiles",
-                         int(pin_fig.setting_json["motor"]
-                                                 ["describe_explosion"]))
+    ee = ExplodeAndEscape("../../MP2_A2_audiofiles/AudioFiles")
     ee.main()

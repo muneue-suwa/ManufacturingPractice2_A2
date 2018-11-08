@@ -9,10 +9,14 @@ from pygame import mixer
 from gpiozero import LED
 from os import path
 
+from .read_setting_json import Setting
+pin_fig = Setting("pin")
+
 
 class Explode:
-    def __init__(self, led_explode_pin, audiofiles_dir):
-        self.led_explode = LED(led_explode_pin)
+    def __init__(self, audiofiles_dir):
+        self.led_explode =\
+            LED(int(pin_fig.setting_json["led"]["describe_explosion"]))
         self.mixer_explode = mixer
         self.audiofiles_dir = audiofiles_dir
 
@@ -31,14 +35,11 @@ class Explode:
 
 
 if __name__ == "__main__":
-    from read_setting_json import Setting
     from time import sleep
-    pin_fig = Setting("pin")
     setting_time = Setting("time")
-    explode = Explode(int(pin_fig.setting_json["led"]["describe_explosion"]),
-                      "../../MP2_A2_audiofiles/AudioFiles/")
+    explode = Explode("../../MP2_A2_audiofiles/AudioFiles/")
     explode.on()
-    sleep(int(setting_time.setting_json["explode_and_escape"]
-                                       ["describe_explosion"]
-                                       ["operation_time"]))
+    sleep(float(setting_time.setting_json["explode_and_escape"]
+                                         ["describe_explosion"]
+                                         ["operation_time"]))
     explode.off()

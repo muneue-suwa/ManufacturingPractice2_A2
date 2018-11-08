@@ -6,9 +6,13 @@ Created on Tue Oct 30 23:55:19 2018
 @author: crantu
 """
 
+from .read_setting_json import Setting
+pin_fig = Setting("pin")
+
 
 class RemoveStopper:
     def __init__(self):
+        # pin_fig.setting_json["motor"]["remove_stopper"]
         pass
 
     def on(self):
@@ -19,11 +23,8 @@ class RemoveStopper:
 
 
 if __name__ == "__main__":
-    from read_setting_json import Setting
     from time import sleep
-    pin_fig = Setting("pin")
     setting_time = Setting("time")
-    pin_fig.setting_json["motor"]["remove_stopper"]
     sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                          ["remove_stopper"]
                                          ["operation_time"]))

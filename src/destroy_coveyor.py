@@ -6,9 +6,13 @@ Created on Tue Oct 30 23:53:09 2018
 @author: crantu
 """
 
+from .read_setting_json import Setting
+pin_fig = Setting("pin")
+
 
 class DestroyCoveyor:
     def __init__(self):
+        # int(pin_fig.setting_json["motor"]["destroy_coveyor"])
         pass
 
     def on(self):
@@ -19,11 +23,8 @@ class DestroyCoveyor:
 
 
 if __name__ == "__main__":
-    from read_setting_json import Setting
     from time import sleep
     setting_time = Setting("time")
-    pin_fig = Setting("pin")
-    int(pin_fig.setting_json["motor"]["destroy_coveyor"])
     sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                          ["destroy_coveyor"]
                                          ["operation_time"]))

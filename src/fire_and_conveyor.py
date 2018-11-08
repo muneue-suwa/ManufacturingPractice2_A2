@@ -14,20 +14,17 @@ from .remove_stopper import RemoveStopper
 
 from .time_calculator import fire_and_conveyor_time
 from .sort_functions import SortFunctions
-
 from .delay_and_run import DelayAndRun
-# audiofiles_dir = "../../MP2_A2_audiofiles/"
-# siren_mp3 = "ambulance-siren2.mp3"
+from .read_setting_json import Setting
+pin_fig = Setting("pin")
 
 
 class FireAndConveyor:
-    def __init__(self, led_siren_pin, audiofiles_dir,
-                 motor_conveyor_pin,
-                 led_fire_pin):
+    def __init__(self, audiofiles_dir):
 
-        self.siren = Siren(led_siren_pin, audiofiles_dir)
-        self.conveyor = Conveyor(motor_conveyor_pin)
-        self.fire = Fire(led_fire_pin)
+        self.siren = Siren(audiofiles_dir)
+        self.conveyor = Conveyor()
+        self.fire = Fire()
         self.destroy_conveyor = DestroyCoveyor()  # temp
         self.remove_stopper = RemoveStopper()  # temp
 
@@ -59,15 +56,5 @@ class FireAndConveyor:
 
 
 if __name__ == "__main__":
-    from read_setting_json import Setting
-    pin_fig = Setting("pin")
-    led_siren_pin_fig = int(pin_fig.setting_json["led"]["describe_fire_truck"])
-    conveyour_pin_fig = int(pin_fig.setting_json["motor"]["move_conveyor"])
-    led_fire_pin_fig = int(pin_fig.setting_json["led"]["describe_fire"])
-
-    fc = FireAndConveyor(led_siren_pin=led_siren_pin_fig,
-                         audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles",
-                         motor_conveyor_pin=conveyour_pin_fig,
-                         led_fire_pin=led_fire_pin_fig)
-
+    fc = FireAndConveyor(audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles")
     fc.main()

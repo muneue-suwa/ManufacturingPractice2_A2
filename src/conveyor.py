@@ -7,11 +7,15 @@ Created on Tue Oct 30 23:36:10 2018
 """
 
 from gpiozero import LED
+from .read_setting_json import Setting
+pin_fig = Setting("pin")
 
 
 class Conveyor:
-    def __init__(self, motor_conveyor_pin):
-        self.motor_conveyor = LED(motor_conveyor_pin)
+    def __init__(self):
+        self.motor_conveyor =\
+            LED(int(pin_fig.setting_json["motor"]
+                                        ["move_conveyor"]))
 
     def on(self):
         self.motor_conveyor.on()
@@ -23,11 +27,9 @@ class Conveyor:
 
 
 if __name__ == "__main__":
-    from read_setting_json import Setting
     from time import sleep
-    pin_fig = Setting("pin")
     setting_time = Setting("time")
-    conveyor = Conveyor(int(pin_fig.setting_json["motor"]["move_conveyor"]))
+    conveyor = Conveyor()
     conveyor.on()
     sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                          ["move_conveyor"]

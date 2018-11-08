@@ -17,16 +17,11 @@ audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
 pinfig = mp2Setting("pin_fig")
 led_pin = pinfig.setting_json["led"]
 motor_pin = pinfig.setting_json["motor"]
-fc = FireAndConveyor(led_siren_pin=int(led_pin["describe_fire_truck"]),
-                     audiofiles_dir=audiodir,
-                     motor_conveyor_pin=int(motor_pin["move_conveyor"]),
-                     led_fire_pin=int(led_pin["describe_fire"]))
-ee = ExplodeAndEscape(led_explode_pin=int(led_pin["describe_explosion"]),
-                      audiofiles_dir=audiodir,
-                      motor_escape_pin=int(motor_pin["launch_balls"]))
-
-
 button_pin = pinfig.setting_json["button"]
+
+fc = FireAndConveyor(audiofiles_dir=audiodir)
+ee = ExplodeAndEscape(audiofiles_dir=audiodir)
+
 first_button = Button(int(button_pin["first_button"]))
 second_button = Button(int(button_pin["second_button"]))
 
