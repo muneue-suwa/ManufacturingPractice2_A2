@@ -10,8 +10,9 @@ from time import sleep, time
 
 
 class DelayAndRun:
-    def __init__(self):
+    def __init__(self, init_time):
         self.start_time = time()
+        self.init_time = init_time
 
     def delay_and_run(self, func, wating_time, before_execution_time):
         wating_time -= before_execution_time
@@ -19,7 +20,8 @@ class DelayAndRun:
             sleep(wating_time)
 
         old_time = time()
-        print("{:.3f} sec: ".format(time() - self.start_time), end="")
+        print("{:.3f} sec".format(old_time - self.init_time), end="")
+        print(" ({:.3f} sec): ".format(old_time - self.start_time), end="")
         func()
         new_execution_time = time() - old_time
 

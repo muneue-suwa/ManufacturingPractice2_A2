@@ -9,6 +9,7 @@ Created on Wed Oct 24 20:56:58 2018
 from gpiozero import Button
 from os import path
 from argparse import ArgumentParser
+from time import time
 
 from src.fire_and_conveyor import FireAndConveyor
 from src.explode_and_escape import ExplodeAndEscape
@@ -39,19 +40,21 @@ def main():
 
     option = get_option()
     if option.waitforenter:
-        input("Waiting ENTER key instead of BUTTON1")
+        input("Waiting ENTER key instead of BUTTON1: ")
     else:
         first_button.wait_for_press()
-    fc.main()
+    init_time = time()
+    fc.main(init_time)
 
     if option.waitforenter:
-        input("Waiting ENTER key instead of BUTTON1")
+        input("Waiting ENTER key instead of BUTTON2: ")
     else:
         second_button.wait_for_press()
-    ee.main()
+    ee.main(init_time)
 
-    if option.finishtime and input("Press ENTER key to measure finish time: "):
-        pass
+    if option.finishtime:
+        input("Press ENTER key to measure finish time: ")
+        print("{:.3f} sec: ".format(time() - init_time), end="")
 
 
 if __name__ == "__main__":

@@ -32,9 +32,9 @@ class ExplodeAndEscape:
         sortfunc = SortFunctions(sorted_items, func_dict)
         self.func = sortfunc.func
 
-    def main(self):
+    def main(self, init_time):
         temp_execution_time = 0.0
-        dar = DelayAndRun()
+        dar = DelayAndRun(init_time)
         for i in range(len(self.func)):
             temp_execution_time =\
                 dar.delay_and_run(func=self.func[i],
