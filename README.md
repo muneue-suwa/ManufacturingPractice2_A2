@@ -94,6 +94,11 @@ $ crontab ~/Git/ManufacturingPractice2_A2/setting_files/crontab_mp2_setting
 ### 注意事項
 - 開始時間はすべて `センサー` を基準にする．（動作部がボールの動きと一致しないため）
 
+### オプション
+- 動作時間を計測する．（`-finishtime`, `-t`）: python
+- 標準出力をファイルに記録する（`tee` コマンド）．(`-saveoutput`, `-s`): shellscript
+- `wait_for_press()` の代わりに `input()` を使用する．(`-waitforenter`, `-e`): python
+
 ## その他のマニュアル
 - モータドライバについて：[tb6612fng_manual](manuals/tb6612fng_manual.md) を参照すること
 - Debug 時などに使えるUbuntuのコマンドなど：[ubuntu_manual](manuals/ubuntu_manual.md)を参照すること
