@@ -39,22 +39,29 @@ def main():
     second_button = Button(int(button_pin["second_button"]))
 
     option = get_option()
+
+    print("start")
+
     if option.waitforenter:
-        input("Waiting ENTER key instead of BUTTON1: ")
+        input("Waiting for ENTER key instead of BUTTON1: ")
     else:
+        print("Waiting for BUTTON1 press")
         first_button.wait_for_press()
     init_time = time()
     fc.main(init_time)
 
     if option.waitforenter:
-        input("Waiting ENTER key instead of BUTTON2: ")
+        input("Waiting for ENTER key instead of BUTTON2: ")
     else:
         second_button.wait_for_press()
+        print("Waiting for BUTTON2 press")
     ee.main(init_time)
 
     if option.finishtime:
         input("Press ENTER key to measure finish time: ")
         print("{:.3f} sec: ".format(time() - init_time), end="")
+
+    print("end")
 
 
 if __name__ == "__main__":
