@@ -12,6 +12,8 @@ $ tree ~/Git
 │       └── *.mp3  # Audio files
 └─── ManufacturingPractice2_A2
     ├── README.md
+    ├── log
+    │   └── *.log  # Log files
     ├── main.py
     ├── manuals
     │   └── *_manual.md
@@ -33,6 +35,7 @@ $ tree ~/Git
     │   ├── siren.py
     │   ├── sort_functions.py
     │   └── time_calculator.py
+    ├── start.sh  # Shellscript to start main.py
     └── test
         └── audiotest.py
 ```
@@ -95,9 +98,13 @@ $ crontab ~/Git/ManufacturingPractice2_A2/setting_files/crontab_mp2_setting
 - 開始時間はすべて `センサー` を基準にする．（動作部がボールの動きと一致しないため）
 
 ### オプション
-- 動作時間を計測する．（`-finishtime`, `-t`）: python
-- 標準出力をファイルに記録する（`tee` コマンド）．(`-saveoutput`, `-s`): shellscript
-- `wait_for_press()` の代わりに `input()` を使用する．(`-waitforenter`, `-e`): python
+- `sh start.sh` に使用する．
+- 詳細
+    - `-finishtime`, `-t`: 動作時間を計測する．（python側で操作する）
+    - `-saveoutput`, `-s`: 標準出力をファイルに記録する．（shellscript側で操作する）
+    - `-waitforenter`, `-e`: `wait_for_press()` の代わりに `input()` を使用する．（python側で操作する）
+- 使用例
+    - `$ sh start.sh -t -e`: 動作時間を測定し，実行時に出力された標準出力をファイルに記録する．
 
 ## その他のマニュアル
 - モータドライバについて：[tb6612fng_manual](manuals/tb6612fng_manual.md) を参照すること
