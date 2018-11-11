@@ -1,0 +1,5 @@
+# /etc/wpa_supplicant/wpa_supplicant.conf
+network={
+	ssid="mp2_hotspot"
+	psk=d1488ff54c6ab23497910527e1b11c899bd52bdeb2dbacddd630ba6bc93021af
+}
