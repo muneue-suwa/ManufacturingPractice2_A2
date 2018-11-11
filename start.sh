@@ -15,7 +15,7 @@ done
 
 START_SH_FILENAME=`readlink -f $0`
 MAIN_PY_DIRNAME=`dirname $START_SH_FILENAME`
-MAIN_PY_FILENAME="$MAIN_PY_DIRNAME/main.py"
+MAIN_PY_FILENAME="$MAIN_PY_DIRNAME/src/main.py"
 LOG_FILE_NAME="$MAIN_PY_DIRNAME/log/mp2_shell_$(date +\%Y\%m\%d_\%H\%M\%S).log"
 
 cd $MAIN_PY_DIRNAME
@@ -33,9 +33,9 @@ mkdir -p $MAIN_PY_DIRNAME/log
 else
   if [ "$FLG_T" = "TRUE" -a "$FLG_E" = "TRUE" ] ; then
     python3 $MAIN_PY_FILENAME -t -e
-  elif [ "$FLG_T" = "TRUE"] ; then
+  elif [ "$FLG_T" = "TRUE" ] ; then
     python3 $MAIN_PY_FILENAME -t
-  elif [ "$FLG_E" = "TRUE"] ; then
+  elif [ "$FLG_E" = "TRUE" ] ; then
     python3 $MAIN_PY_FILENAME -e
   else
     python3 $MAIN_PY_FILENAME

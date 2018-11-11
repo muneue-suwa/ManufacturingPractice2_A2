@@ -9,7 +9,7 @@ from pygame import mixer
 from gpiozero import LED
 from os import path
 
-from .read_setting_json import Setting
+from read_setting_json import Setting
 pin_fig = Setting("pin")
 
 

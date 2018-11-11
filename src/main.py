@@ -11,9 +11,9 @@ from os import path
 from argparse import ArgumentParser
 from time import time
 
-from src.fire_and_conveyor import FireAndConveyor
-from src.explode_and_escape import ExplodeAndEscape
-from src.read_setting_json import Setting as mp2Setting
+from fire_and_conveyor import FireAndConveyor
+from explode_and_escape import ExplodeAndEscape
+from read_setting_json import Setting as mp2Setting
 
 
 def get_option():

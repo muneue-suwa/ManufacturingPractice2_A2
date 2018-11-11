@@ -6,7 +6,7 @@ Created on Tue Oct 30 23:55:19 2018
 @author: crantu
 """
 
-from .read_setting_json import Setting
+from read_setting_json import Setting
 pin_fig = Setting("pin")
 
 

@@ -7,7 +7,7 @@ Created on Fri Oct 26 22:56:09 2018
 """
 
 from pprint import pprint
-from .read_setting_json import Setting
+from read_setting_json import Setting
 setting_time = Setting("time")
 setting_file = setting_time.setting_json
 

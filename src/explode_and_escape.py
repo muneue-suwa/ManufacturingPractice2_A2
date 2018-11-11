@@ -6,13 +6,13 @@ Created on Wed Oct 24 20:48:40 2018
 @author: crantu
 """
 
-from .explode import Explode
-from .escape import Escape
+from explode import Explode
+from escape import Escape
 
-from .time_calculator import explode_and_escape_time
-from .sort_functions import SortFunctions
+from time_calculator import explode_and_escape_time
+from sort_functions import SortFunctions
 
-from .delay_and_run import DelayAndRun
+from delay_and_run import DelayAndRun
 
 
 class ExplodeAndEscape:

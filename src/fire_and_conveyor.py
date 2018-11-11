@@ -6,16 +6,16 @@ Created on Wed Oct 24 20:32:34 2018
 @author: crantu
 """
 
-from .siren import Siren
-from .conveyor import Conveyor
-from .fire import Fire
-from .destroy_coveyor import DestroyCoveyor
-from .remove_stopper import RemoveStopper
+from siren import Siren
+from conveyor import Conveyor
+from fire import Fire
+from destroy_coveyor import DestroyCoveyor
+from remove_stopper import RemoveStopper
 
-from .time_calculator import fire_and_conveyor_time
-from .sort_functions import SortFunctions
-from .delay_and_run import DelayAndRun
-from .read_setting_json import Setting
+from time_calculator import fire_and_conveyor_time
+from sort_functions import SortFunctions
+from delay_and_run import DelayAndRun
+from read_setting_json import Setting
 pin_fig = Setting("pin")
 
 

@@ -7,7 +7,7 @@ Created on Wed Oct 31 09:32:36 2018
 """
 
 from gpiozero import LED
-from .read_setting_json import Setting
+from read_setting_json import Setting
 pin_fig = Setting("pin")
 
 
