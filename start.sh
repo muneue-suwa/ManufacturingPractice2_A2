@@ -19,8 +19,8 @@ MAIN_PY_FILENAME="$MAIN_PY_DIRNAME/src/main.py"
 LOG_FILE_NAME="$MAIN_PY_DIRNAME/log/mp2_shell_$(date +\%Y\%m\%d_\%H\%M\%S).log"
 
 cd $MAIN_PY_DIRNAME
-if [ "$FLG_S" = "TRUE" ]; then
 mkdir -p $MAIN_PY_DIRNAME/log
+if [ "$FLG_S" = "TRUE" ]; then
   if [ "$FLG_T" = "TRUE" -a "$FLG_E" = "TRUE" ] ; then
     python3 -u $MAIN_PY_FILENAME -t True -e True | tee $LOG_FILE_NAME
   elif [ "$FLG_T" = "TRUE" ] ; then
