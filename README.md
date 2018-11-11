@@ -42,8 +42,7 @@ $ tree ~/Git
 
 ## 動作環境
 ### Raspberry PI
-`Raspberry PI 2 model B` を使用する．
-（無線LANの使用も考えているため，`Raspberry PI 3 model B` も考慮する）
+`Raspberry PI 2 model B` を使用する．（無線LANの使用も考えているため，`Raspberry PI 3 model B` も考慮する）
 
 ```shell-session:raspbian_version
 $ lsb_release -a
