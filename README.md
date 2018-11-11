@@ -14,9 +14,8 @@ $ tree ~/Git
     ├── README.md
     ├── log
     │   └── *.log  # Log files
-    ├── main.py
     ├── manuals
-    │   └── *_manual.md
+    │   └── *_manual.md  # Manual files
     ├── setting_files
     │   ├── crontab_mp2_setting
     │   ├── setting_pin_fig.json
@@ -27,22 +26,24 @@ $ tree ~/Git
     │   ├── destroy_coveyor.py
     │   ├── escape.py
     │   ├── explode.py
-    │   ├── explode_and_escape.py
+    │   ├── explode_and_escape.py  # Middle script
     │   ├── fire.py
-    │   ├── fire_and_conveyor.py
+    │   ├── fire_and_conveyor.py  # Middle script
+    │   ├── main.py  # Top script
     │   ├── read_setting_json.py
     │   ├── remove_stopper.py
     │   ├── siren.py
     │   ├── sort_functions.py
     │   └── time_calculator.py
-    ├── start.sh  # Shellscript to start main.py
+    ├── start.sh  # Shell script to start the program
     └── test
-        └── audiotest.py
+        └── audiotest.py  # Python script for audio test
 ```
 
 ## 動作環境
 ### Raspberry PI
 `Raspberry PI 2 model B` を使用する．
+（無線LANの使用も考えているため，`Raspberry PI 3 model B` も考慮する）
 
 ```shell-session:raspbian_version
 $ lsb_release -a
