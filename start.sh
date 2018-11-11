@@ -22,21 +22,21 @@ cd $MAIN_PY_DIRNAME
 if [ "$FLG_S" = "TRUE" ]; then
 mkdir -p $MAIN_PY_DIRNAME/log
   if [ "$FLG_T" = "TRUE" -a "$FLG_E" = "TRUE" ] ; then
-    python3 $MAIN_PY_FILENAME -t -e | tee $LOG_FILE_NAME
-  elif [ "$FLG_T" = "TRUE"] ; then
-    python3 $MAIN_PY_FILENAME -t | tee $LOG_FILE_NAME
-  elif [ "$FLG_E" = "TRUE"] ; then
-    python3 $MAIN_PY_FILENAME -e | tee $LOG_FILE_NAME
+    python3 -u $MAIN_PY_FILENAME -t True -e True | tee $LOG_FILE_NAME
+  elif [ "$FLG_T" = "TRUE" ] ; then
+    python3 -u $MAIN_PY_FILENAME -t True | tee $LOG_FILE_NAME
+  elif [ "$FLG_E" = "TRUE" ] ; then
+    python3 -u $MAIN_PY_FILENAME -e True | tee $LOG_FILE_NAME
   else
-    python3 $MAIN_PY_FILENAME | tee $LOG_FILE_NAME
+    python3 -u $MAIN_PY_FILENAME | tee $LOG_FILE_NAME
   fi
 else
   if [ "$FLG_T" = "TRUE" -a "$FLG_E" = "TRUE" ] ; then
-    python3 $MAIN_PY_FILENAME -t -e
+    python3 $MAIN_PY_FILENAME -t True -e True
   elif [ "$FLG_T" = "TRUE" ] ; then
-    python3 $MAIN_PY_FILENAME -t
+    python3 $MAIN_PY_FILENAME -t True
   elif [ "$FLG_E" = "TRUE" ] ; then
-    python3 $MAIN_PY_FILENAME -e
+    python3 $MAIN_PY_FILENAME -e True
   else
     python3 $MAIN_PY_FILENAME
   fi
