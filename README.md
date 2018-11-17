@@ -58,13 +58,14 @@ $ python3 --version
 Python 3.5.3
 ```
 ## 準備
-### Pythonの追加パッケージのインストール
+### スクリプトのダウンロードと追加パッケージのインストール
 以下のコードをコピペする．
 
 ```bash:install_mp2_a2
 mkdir -p $HOME/Git && \
 cd $HOME/Git && \
-git clone https://github.com/sik103/ManufacturingPractice2_A2.git
+git clone https://github.com/sik103/ManufacturingPractice2_A2.git && \
+sudo pip3 install gpiozero pygame
 ```
 
 ### gdriveの設定
