@@ -11,8 +11,12 @@
     "motor":{
         "describe_fire":null, 
         "describe_fire_truck":null,
-        "move_conveyor":"5",
-        "destroy_coveyor":"6",
+        "move_conveyor":{
+            "in1":"",
+            "in2":""},
+        "destroy_coveyor":{
+            "in1":"",
+            "in2":""},
         "remove_stopper":"12",
         "describe_explosion":"13",
         "launch_balls":"16"
