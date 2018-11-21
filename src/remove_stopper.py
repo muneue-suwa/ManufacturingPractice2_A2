@@ -6,7 +6,7 @@ Created on Tue Oct 30 23:55:19 2018
 @author: crantu
 """
 
-from gpiozero import AngularServo
+from gpiozero import Servo
 
 from read_setting_json import Setting
 pin_fig = Setting("pin")
@@ -22,12 +22,12 @@ frame_width=20/1000, pin_factory=None)
 class RemoveStopper:
     def __init__(self):
         servo_pin = int(pin_fig.setting_json["motor"]["remove_stopper"])
-        self.servo = AngularServo(pin=servo_pin, initial_angle=0,
-                                  min_angle=0, max_angle=63)
+        self.servo = Servo(servo_pin)
         # pin_fig.setting_json["motor"]["remove_stopper"]
+        self.servo.min()
 
     def on(self):
-        self.servo.max()
+        self.servo.value = 0.4
         print("remove stopper on")
 
     def off(self):
