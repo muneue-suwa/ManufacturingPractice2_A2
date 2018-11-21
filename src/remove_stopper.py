@@ -38,10 +38,13 @@ class RemoveStopper:
 
 
 if __name__ == "__main__":
-    from time import sleep
     setting_time = Setting("time")
     rs = RemoveStopper()
-    sleep(10)
+    print("wating...")
+    for i in range(10):
+        print("{}, ", end="")
+        sleep(1)
+    print("")
     rs.on()
     # sleep(float(setting_time.setting_json["fire_and_conveyor"]
     #                                      ["remove_stopper"]
