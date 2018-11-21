@@ -9,6 +9,7 @@ Created on Tue Oct 30 23:55:19 2018
 from gpiozero import Servo
 
 from read_setting_json import Setting
+from time import sleep
 pin_fig = Setting("pin")
 
 """
@@ -23,11 +24,13 @@ class RemoveStopper:
     def __init__(self):
         servo_pin = int(pin_fig.setting_json["motor"]["remove_stopper"])
         self.servo = Servo(servo_pin)
-        # pin_fig.setting_json["motor"]["remove_stopper"]
+        print(pin_fig.setting_json["motor"]["remove_stopper"])
         self.servo.min()
+        sleep(1)
 
     def on(self):
         self.servo.value = 0.4
+        sleep(1)
         print("remove stopper on")
 
     def off(self):
@@ -35,9 +38,10 @@ class RemoveStopper:
 
 
 if __name__ == "__main__":
-    # from time import sleep
+    from time import sleep
     setting_time = Setting("time")
     rs = RemoveStopper()
+    sleep(10)
     rs.on()
     # sleep(float(setting_time.setting_json["fire_and_conveyor"]
     #                                      ["remove_stopper"]
