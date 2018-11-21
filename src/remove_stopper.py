@@ -6,16 +6,28 @@ Created on Tue Oct 30 23:55:19 2018
 @author: crantu
 """
 
+from gpiozero import AngularServo
+
 from read_setting_json import Setting
 pin_fig = Setting("pin")
+
+"""
+gpiozero.AngularServo(pin, *,
+initial_angle=0, min_angle=-90, max_angle=90,
+min_pulse_width=1/1000, max_pulse_width=2/1000,
+frame_width=20/1000, pin_factory=None)
+"""
 
 
 class RemoveStopper:
     def __init__(self):
+        servo_pin = int(pin_fig.setting_json["motor"]["remove_stopper"])
+        self.servo = AngularServo(pin=servo_pin, initial_angle=0,
+                                  min_angle=0, max_angle=63)
         # pin_fig.setting_json["motor"]["remove_stopper"]
-        pass
 
     def on(self):
+        self.servo.max()
         print("remove stopper on")
 
     def off(self):
@@ -23,8 +35,10 @@ class RemoveStopper:
 
 
 if __name__ == "__main__":
-    from time import sleep
+    # from time import sleep
     setting_time = Setting("time")
-    sleep(float(setting_time.setting_json["fire_and_conveyor"]
-                                         ["remove_stopper"]
-                                         ["operation_time"]))
+    rs = RemoveStopper()
+    rs.on()
+    # sleep(float(setting_time.setting_json["fire_and_conveyor"]
+    #                                      ["remove_stopper"]
+    #                                      ["operation_time"]))
