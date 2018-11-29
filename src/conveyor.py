@@ -6,31 +6,29 @@ Created on Tue Oct 30 23:36:10 2018
 @author: crantu
 """
 
-from read_setting_json import Setting
 from tb6612fng import TB6612FNG
-pin_fig = Setting("pin")
+from read_pincfg import ReadPinFig
+pin_fig = ReadPinFig()
 
 
 class Conveyor:
     def __init__(self):
-        motor_pin_fig_in1 =\
-            int(pin_fig.setting_json["motor"]["move_conveyor"]["in1"])
-        motor_pin_fig_in2 =\
-            int(pin_fig.setting_json["motor"]["move_conveyor"]["in2"])
-        self.motor_conveyor = TB6612FNG(pin_fig_in1=motor_pin_fig_in1,
-                                        pin_fig_in2=motor_pin_fig_in2)
+        self.motor_moveconv = TB6612FNG(pin_fig_in1=pin_fig.moveconv_motorin1,
+                                        pin_fig_in2=pin_fig.moveconv_motorin1,
+                                        pin_fig_pwm=pin_fig.moveconv_motorpwm)
 
     def on(self):
-        self.motor_conveyor.on()
+        self.motor_moveconv.on()
         print("conveyor on")
 
     def off(self):
-        self.motor_conveyor.off()
+        self.motor_moveconv.off()
         print("conveyor off")
 
 
 if __name__ == "__main__":
     from time import sleep
+    from read_setting_json import Setting
     setting_time = Setting("time")
     conveyor = Conveyor()
     conveyor.on()

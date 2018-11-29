@@ -7,14 +7,13 @@ Created on Tue Oct 30 23:34:15 2018
 """
 
 from gpiozero import LED
-
-from read_setting_json import Setting
-pin_fig = Setting("pin")
+from read_pincfg import ReadPinFig
+pin_fig = ReadPinFig()
 
 
 class Fire:
     def __init__(self):
-        self.led_fire = LED(int(pin_fig.setting_json["led"]["describe_fire"]))
+        self.led_fire = LED(pin_fig.fire_led)
         print(self.led_fire)
 
     def on(self):
@@ -28,6 +27,7 @@ class Fire:
 
 if __name__ == "__main__":
     from time import sleep
+    from read_setting_json import Setting
     setting_time = Setting("time")
     fire = Fire()
     fire.on()

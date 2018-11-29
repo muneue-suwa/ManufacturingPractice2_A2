@@ -7,14 +7,13 @@ Created on Wed Oct 31 09:32:36 2018
 """
 
 from gpiozero import LED
-from read_setting_json import Setting
-pin_fig = Setting("pin")
+from read_pincfg import ReadPinFig
+pin_fig = ReadPinFig()
 
 
 class Escape:
     def __init__(self):
-        self.motor_escape = LED(int(pin_fig.setting_json["motor"]
-                                                        ["launch_balls"]))
+        self.motor_escape = LED(pin_fig.escape_relayswitch)
 
     def on(self):
         self.motor_escape.on()
@@ -27,6 +26,7 @@ class Escape:
 
 if __name__ == "__main__":
     from time import sleep
+    from read_setting_json import Setting
     setting_time = Setting("time")
     escape = Escape()
     escape.on()

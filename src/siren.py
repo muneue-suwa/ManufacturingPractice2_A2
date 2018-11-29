@@ -9,15 +9,12 @@ Created on Tue Oct 30 23:35:37 2018
 from pygame import mixer
 from gpiozero import LED
 from os import path
-
-from read_setting_json import Setting
-pin_fig = Setting("pin")
-
+from read_pincfg import ReadPinFig
+pin_fig = ReadPinFig()
 
 class Siren:
     def __init__(self, audiofiles_dir):
-        self.led_siren = LED(int(pin_fig.setting_json["led"]
-                                                     ["describe_fire_truck"]))
+        self.led_siren = LED(pin_fig.siren_led)
         self.mixer_siren = mixer
         self.audiofiles_dir = audiofiles_dir
 
@@ -38,6 +35,7 @@ class Siren:
 
 if __name__ == "__main__":
     from time import sleep
+    from read_setting_json import Setting
     setting_time = Setting("time")
     siren = Siren(audiofiles_dir="../../MP2_A2_audiofiles/AudioFiles/")
     siren.on()

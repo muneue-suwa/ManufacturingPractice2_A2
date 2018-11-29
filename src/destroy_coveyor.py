@@ -6,24 +6,29 @@ Created on Tue Oct 30 23:53:09 2018
 @author: crantu
 """
 
-from read_setting_json import Setting
-pin_fig = Setting("pin")
+from tb6612fng import TB6612FNG
+from read_pincfg import ReadPinFig
+pin_fig = ReadPinFig()
 
 
 class DestroyCoveyor:
     def __init__(self):
-        # int(pin_fig.setting_json["motor"]["destroy_coveyor"])
-        pass
+        self.motor_destconv = TB6612FNG(pin_fig_in1=pin_fig.destconv_motorin1,
+                                        pin_fig_in2=pin_fig.destconv_motorin2,
+                                        pin_fig_pwm=pin_fig.destconv_motorpwm)
 
     def on(self):
+        self.motor_destconv.on()
         print("destroy conveyor on")
 
     def off(self):
+        self.motor_destconv.off()
         print("destroy conveyor off")
 
 
 if __name__ == "__main__":
     from time import sleep
+    from read_setting_json import Setting
     setting_time = Setting("time")
     sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                          ["destroy_coveyor"]
