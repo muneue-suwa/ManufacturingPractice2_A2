@@ -13,15 +13,20 @@ from gpiozero import DigitalOutputDevice, PWMOutputDevice
 
 
 class TB6612FNG:
-    def __init__(self, pin_fig_in1, pin_fig_in2, pin_fig_pwm=None):
+    def __init__(self, pin_fig_in1, pin_fig_in2,
+                 pin_fig_pwm=None, frequency=None):
         self.in1 = DigitalOutputDevice(pin=pin_fig_in1)
         self.in2 = DigitalOutputDevice(pin=pin_fig_in2)
         if pin_fig_pwm:  # PWM mode
-            self.pwm = PWMOutputDevice(pin=pin_fig_pwm)
-            self.cw = self.pwm_cw
-            self.ccw = self.pwm_ccw
-            self.stop = self.pwm_stop
-            self.stop_and_close = self.pwm_stop_and_close
+            if frequency is None:
+                raise TypeError("Required argument 'frequency:int' not found")
+            else:
+                self.pwm = PWMOutputDevice(pin=pin_fig_pwm,
+                                           requency=frequency)
+                self.cw = self.pwm_cw
+                self.ccw = self.pwm_ccw
+                self.stop = self.pwm_stop
+                self.stop_and_close = self.pwm_stop_and_close
         else:
             self.cw = self.digital_cw
             self.ccw = self.digital_ccw
