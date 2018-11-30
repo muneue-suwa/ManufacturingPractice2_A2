@@ -20,11 +20,12 @@ frame_width=20/1000, pin_factory=None)
 """
 
 
+from read_pincfg import ReadPinFig
+
 class RemoveStopper:
     def __init__(self):
-        servo_pin = int(pin_fig.setting_json["motor"]["remove_stopper"])
-        self.servo = Servo(servo_pin)
-        print(pin_fig.setting_json["motor"]["remove_stopper"])
+        pin_fig = ReadPinFig()
+        self.servo = Servo(pin_fig.remove_stopperservo)
         self.servo.min()
         sleep(1)
 

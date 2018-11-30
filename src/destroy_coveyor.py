@@ -18,11 +18,11 @@ class DestroyCoveyor:
                                         pin_fig_pwm=pin_fig.destconv_motorpwm)
 
     def on(self):
-        self.motor_destconv.on()
+        self.motor_destconv.cw()
         print("destroy conveyor on")
 
     def off(self):
-        self.motor_destconv.off()
+        self.motor_destconv.stop_and_close()
         print("destroy conveyor off")
 
 

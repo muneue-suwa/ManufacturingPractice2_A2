@@ -35,8 +35,8 @@ def main():
     fc = FireAndConveyor(audiofiles_dir=audiodir)
     ee = ExplodeAndEscape(audiofiles_dir=audiodir)
 
-    first_button = Button(int(button_pin["first_button"]))
-    second_button = Button(int(button_pin["second_button"]))
+    first_button = Button(17)
+    second_button = Button(27)
 
     option = get_option()
 
