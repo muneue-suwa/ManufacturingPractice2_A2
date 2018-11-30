@@ -7,24 +7,13 @@ Created on Tue Oct 30 23:55:19 2018
 """
 
 from gpiozero import Servo
-
-from read_setting_json import Setting
 from time import sleep
-pin_fig = Setting("pin")
-
-"""
-gpiozero.AngularServo(pin, *,
-initial_angle=0, min_angle=-90, max_angle=90,
-min_pulse_width=1/1000, max_pulse_width=2/1000,
-frame_width=20/1000, pin_factory=None)
-"""
-
-
 from read_pincfg import ReadPinFig
+pin_fig = ReadPinFig()
+
 
 class RemoveStopper:
     def __init__(self):
-        pin_fig = ReadPinFig()
         self.servo = Servo(pin_fig.remove_stopperservo)
         self.servo.min()
         sleep(1)
@@ -39,6 +28,7 @@ class RemoveStopper:
 
 
 if __name__ == "__main__":
+    from read_setting_json import Setting
     setting_time = Setting("time")
     rs = RemoveStopper()
     print("wating...")
