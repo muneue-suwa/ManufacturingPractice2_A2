@@ -22,7 +22,7 @@ class TB6612FNG:
                 raise TypeError("Required argument 'frequency:int' not found")
             else:
                 self.pwm = PWMOutputDevice(pin=pin_fig_pwm,
-                                           requency=frequency)
+                                           frequency=frequency)
                 self.cw = self.pwm_cw
                 self.ccw = self.pwm_ccw
                 self.stop = self.pwm_stop

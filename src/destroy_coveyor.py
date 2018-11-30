@@ -15,7 +15,8 @@ class DestroyCoveyor:
     def __init__(self):
         self.motor_destconv = TB6612FNG(pin_fig_in1=pin_fig.destconv_motorin1,
                                         pin_fig_in2=pin_fig.destconv_motorin2,
-                                        pin_fig_pwm=pin_fig.destconv_motorpwm)
+                                        pin_fig_pwm=pin_fig.destconv_motorpwm,
+                                        frequency=100)
 
     def on(self):
         self.motor_destconv.cw()
