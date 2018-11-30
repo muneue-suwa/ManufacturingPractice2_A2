@@ -33,7 +33,7 @@ if __name__ == "__main__":
     rs = RemoveStopper()
     print("wating...")
     for i in range(10):
-        print("{}, ", end="")
+        print("{}, ".format(i), end="")
         sleep(1)
     print("")
     rs.on()
