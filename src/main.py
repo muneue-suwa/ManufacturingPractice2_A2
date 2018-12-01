@@ -13,7 +13,8 @@ from time import time
 
 from fire_and_conveyor import FireAndConveyor
 from explode_and_escape import ExplodeAndEscape
-from read_setting_json import Setting as mp2Setting
+from read_pincfg import ReadPinFig
+pin_fig = ReadPinFig()
 
 
 def get_option():
@@ -29,14 +30,11 @@ def get_option():
 
 def main():
     audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
-    pinfig = mp2Setting("pin_fig")
-    button_pin = pinfig.setting_json["button"]
-
     fc = FireAndConveyor(audiofiles_dir=audiodir)
     ee = ExplodeAndEscape(audiofiles_dir=audiodir)
 
-    first_button = Button(17)
-    second_button = Button(27)
+    first_button = Button(pin_fig.first_button)
+    second_button = Button(pin_fig.second_button)
 
     option = get_option()
 
