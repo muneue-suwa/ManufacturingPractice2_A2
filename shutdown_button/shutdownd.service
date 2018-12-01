@@ -1,0 +1,10 @@
+[Unit]
+Description=Shutdown Daemon
+
+[Service]
+ExecStart=$(dirname $(readlink -f $0))/shutdown_button.py
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
