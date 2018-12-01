@@ -9,10 +9,12 @@ Created on Wed Oct 24 20:56:58 2018
 from gpiozero import Button
 from os import path
 from argparse import ArgumentParser
-from time import time
+from time import time, sleep
 
 from fire_and_conveyor import FireAndConveyor
 from explode_and_escape import ExplodeAndEscape
+from fire import Fire
+
 from read_pincfg import ReadPinFig
 pin_fig = ReadPinFig()
 
@@ -30,6 +32,7 @@ def get_option():
 
 def main():
     audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
+    fire = Fire()
     fc = FireAndConveyor(audiofiles_dir=audiodir)
     ee = ExplodeAndEscape(audiofiles_dir=audiodir)
 
@@ -46,6 +49,7 @@ def main():
         print("Waiting for BUTTON1 press")
         first_button.wait_for_press()
     init_time = time()
+    fire.on()
     fc.main(init_time)
 
     if option.waitforenter:
@@ -54,6 +58,8 @@ def main():
         second_button.wait_for_press()
         print("Waiting for BUTTON2 press")
     ee.main(init_time)
+    sleep(5)
+    fire.off()
 
     if option.finishtime:
         input("Press ENTER key to measure finish time: ")

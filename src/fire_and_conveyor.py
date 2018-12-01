@@ -8,7 +8,6 @@ Created on Wed Oct 24 20:32:34 2018
 
 from siren import Siren
 from conveyor import Conveyor
-from fire import Fire
 from destroy_coveyor import DestroyCoveyor
 from remove_stopper import RemoveStopper
 
@@ -24,16 +23,13 @@ class FireAndConveyor:
 
         self.siren = Siren(audiofiles_dir)
         self.conveyor = Conveyor()
-        self.fire = Fire()
         self.destroy_conveyor = DestroyCoveyor()  # temp
         self.remove_stopper = RemoveStopper()  # temp
 
         sorted_items, self.wating_times = fire_and_conveyor_time()
 
         print(sorted_items)
-        func_dict = {'describe_fire_start': self.fire.on,
-                     'describe_fire_end': self.fire.off,
-                     'describe_fire_truck_start': self.siren.on,
+        func_dict = {'describe_fire_truck_start': self.siren.on,
                      'describe_fire_truck_end': self.siren.off,
                      'move_conveyor_start': self.conveyor.on,
                      'move_conveyor_end': self.conveyor.off,
