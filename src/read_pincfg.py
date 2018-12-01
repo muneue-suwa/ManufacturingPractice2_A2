@@ -37,6 +37,9 @@ class ReadPinFig:
         self.explode_temp2 = config.getint("explode", "temp_pin_fig_2")
         self.first_button = config.getint("button", "first_button")
         self.second_button = config.getint("button", "second_button")
+        self.shutdown_button = config.getint("shutdown_button",
+                                              "shutdown_button")
+        self.boot_led = config.getint("shutdown_button", "boot_led")
 
     def show(self):
         print("self.fire_led: {}".format(self.fire_led))
@@ -54,6 +57,9 @@ class ReadPinFig:
         print("self.explode_temp2: {}".format(self.explode_temp2))
         print("self.first_button: {}".format(self.first_button))
         print("self.second_button: {}".format(self.second_button))
+        print("self.shutdown_button: {}".format(self.shutdown_button))
+        print("self.boot_led: {}".format(self.boot_led))
+
 
 if __name__ == "__main__":
     rpg = ReadPinFig()
