@@ -14,7 +14,7 @@ pin_fig = ReadPinFig()
 class Fire:
     def __init__(self):
         self.led_fire = LED(pin_fig.fire_led)
-        print(self.led_fire)
+        # print(self.led_fire)
 
     def on(self):
         self.led_fire.blink(on_time=0.1, off_time=0.1)
