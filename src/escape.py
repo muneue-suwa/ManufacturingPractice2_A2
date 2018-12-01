@@ -6,14 +6,14 @@ Created on Wed Oct 31 09:32:36 2018
 @author: crantu
 """
 
-from gpiozero import LED
+from gpiozero import DigitalOutputDevice
 from read_pincfg import ReadPinFig
 pin_fig = ReadPinFig()
 
 
 class Escape:
     def __init__(self):
-        self.motor_escape = LED(pin_fig.escape_relayswitch)
+        self.motor_escape = DigitalOutputDevice(pin=pin_fig.escape_relayswitch)
 
     def on(self):
         self.motor_escape.on()
@@ -21,6 +21,7 @@ class Escape:
 
     def off(self):
         self.motor_escape.off()
+        self.motor_escape.close()
         print("escape off")
 
 
