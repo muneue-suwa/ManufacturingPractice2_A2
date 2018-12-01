@@ -11,33 +11,42 @@ $ tree ~/Git
 │   └── AudioFiles
 │       └── *.mp3  # Audio files
 └─── ManufacturingPractice2_A2
-    ├── README.md
-    ├── log
-    │   └── *.log  # Log files
-    ├── manuals
-    │   └── *_manual.md  # Manual files
-    ├── setting_files
-    │   ├── crontab_mp2_setting
-    │   ├── setting_pin_fig.json
-    │   └── setting_time.json
-    ├── src
-    │   ├── conveyor.py
-    │   ├── delay_and_run.py
-    │   ├── destroy_coveyor.py
-    │   ├── escape.py
-    │   ├── explode.py
-    │   ├── explode_and_escape.py  # Middle script
-    │   ├── fire.py
-    │   ├── fire_and_conveyor.py  # Middle script
-    │   ├── main.py  # Top script
-    │   ├── read_setting_json.py
-    │   ├── remove_stopper.py
-    │   ├── siren.py
-    │   ├── sort_functions.py
-    │   └── time_calculator.py
-    ├── start.sh  # Shell script to start the program
-    └── test
-        └── audiotest.py  # Python script for audio test
+    |-- README.md
+    |-- install.sh
+    |-- log
+    |   `-- *.log  # log files
+    |-- manuals
+    |   `-- *_manual.md
+    |-- setting_files
+    |   |-- mp2.crontab
+    |   |-- pin.cfg
+    |   |-- setting_pin_fig.json
+    |   |-- setting_time.json
+    |   `-- wpa_supplicant_conf
+    |-- shutdown_button
+    |   |-- shutdown_button.crontab
+    |   `-- shutdown_button.py
+    |-- src
+    |   |-- conveyor.py
+    |   |-- delay_and_run.py
+    |   |-- destroy_coveyor.py
+    |   |-- escape.py
+    |   |-- explode.py
+    |   |-- explode_and_escape.py
+    |   |-- fire.py
+    |   |-- fire_and_conveyor.py
+    |   |-- main.py
+    |   |-- read_pincfg.py
+    |   |-- read_setting_json.py
+    |   |-- remove_stopper.py
+    |   |-- siren.py
+    |   |-- sort_functions.py
+    |   |-- tb6612fng.py
+    |   `-- time_calculator.py
+    |-- start.sh
+    |-- test
+    |   `-- audiotest.py
+    `-- uninstall.sh
 ```
 
 ## 動作環境
@@ -65,16 +74,12 @@ Python 3.5.3
 mkdir -p $HOME/Git && \
 cd $HOME/Git && \
 git clone https://github.com/sik103/ManufacturingPractice2_A2.git && \
-sudo pip3 install gpiozero pygame
+sudo apt install -y python3-pygame python3-gpiozero && \
+sh ManufacturingPractice2_A2/install.sh
 ```
 
 ### gdriveの設定
 著作権等の問題により，GitHubへの音源の保存が難しいと思われるため，音源はGoogle driveに入れ，テスト環境と本番環境を同期化させる．詳細は [gdrive_manual](manuals/gdrive_manual.md) を参照すること．
-
-### 自動起動の設定
-```
-$ crontab ~/Git/ManufacturingPractice2_A2/setting_files/crontab_mp2_setting
-```
 
 ### PinOut
 詳細は [rpi-pinout_manual](manuals/rpi-pinout_manual.md) を参照すること．
