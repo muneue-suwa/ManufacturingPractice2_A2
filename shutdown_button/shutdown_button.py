@@ -30,7 +30,7 @@ class ShutdownButton:
 
     def shutdown_with_button(self):
         self.boot_led.on()
-        self.shutdown_button.when_pressed = self.say_hello
+        self.shutdown_button.when_pressed = self.pyshutdown
         pause()
 
 
