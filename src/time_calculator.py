@@ -13,9 +13,7 @@ setting_file = setting_time.setting_json
 
 
 def fire_and_conveyor_time():
-    times = {'describe_fire_start': 0.0,
-             'describe_fire_end': 0.0,
-             'describe_fire_truck_start': 0.0,
+    times = {'describe_fire_truck_start': 0.0,
              'describe_fire_truck_end': 0.0,
              'move_conveyor_start': 0.0,
              'move_conveyor_end': 0.0,
