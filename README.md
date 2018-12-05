@@ -3,52 +3,6 @@
 ## プログラムの用途
 岡山大学機械システム系学科システムコースの機械工作実習2の授業にて制作するロボットに使用するプログラム
 
-## tree
-```shell-session:tree
-$ tree ~/Git
-.
-├── MP2_A2_audiofiles
-│   └── AudioFiles
-│       └── *.mp3  # Audio files
-└─── ManufacturingPractice2_A2
-    |-- README.md
-    |-- install.sh
-    |-- log
-    |   `-- *.log  # log files
-    |-- manuals
-    |   `-- *_manual.md
-    |-- setting_files
-    |   |-- mp2.crontab
-    |   |-- pin.cfg
-    |   |-- setting_pin_fig.json
-    |   |-- setting_time.json
-    |   `-- wpa_supplicant_conf
-    |-- shutdown_button
-    |   |-- shutdown_button.crontab
-    |   `-- shutdown_button.py
-    |-- src
-    |   |-- conveyor.py
-    |   |-- delay_and_run.py
-    |   |-- destroy_coveyor.py
-    |   |-- escape.py
-    |   |-- explode.py
-    |   |-- explode_and_escape.py
-    |   |-- fire.py
-    |   |-- fire_and_conveyor.py
-    |   |-- main.py
-    |   |-- read_pincfg.py
-    |   |-- read_setting_json.py
-    |   |-- remove_stopper.py
-    |   |-- siren.py
-    |   |-- sort_functions.py
-    |   |-- tb6612fng.py
-    |   `-- time_calculator.py
-    |-- start.sh
-    |-- test
-    |   `-- audiotest.py
-    `-- uninstall.sh
-```
-
 ## 動作環境
 ### Raspberry PI
 `Raspberry PI 2 model B` を使用する．（無線LANの使用も考えているため，`Raspberry PI 3 model B` も考慮する）
