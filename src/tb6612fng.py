@@ -14,7 +14,7 @@ from gpiozero import DigitalOutputDevice, PWMOutputDevice
 
 class TB6612FNG:
     def __init__(self, pin_fig_in1, pin_fig_in2,
-                 pin_fig_pwm=None, frequency=None, cw=True):
+                 pin_fig_pwm=None, frequency=None):
         self.in1 = DigitalOutputDevice(pin=pin_fig_in1)
         self.in2 = DigitalOutputDevice(pin=pin_fig_in2)
         if pin_fig_pwm:  # PWM mode
@@ -32,13 +32,6 @@ class TB6612FNG:
             self.ccw = self.digital_ccw
             self.stop = self.digital_stop
             self.stop_and_close = self.digital_stop_and_close
-
-        if cw is True:
-            self.turn = self.cw
-        elif cw is False:
-            self.turn = self.ccw
-        else:
-            raise ValueError("cw: True or False")
 
     def digital_cw(self):
         self.in1.on()
@@ -85,9 +78,6 @@ class TB6612FNG:
         pass
 
     def stop_and_close(self):
-        pass
-
-    def turn(self):
         pass
 
 
