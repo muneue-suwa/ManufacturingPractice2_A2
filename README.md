@@ -82,7 +82,7 @@ sh ManufacturingPractice2_A2/install.sh
 著作権等の問題により，GitHubへの音源の保存が難しいと思われるため，音源はGoogle driveに入れ，テスト環境と本番環境を同期化させる．詳細は [gdrive_manual](manuals/gdrive_manual.md) を参照すること．
 
 ### PinOut
-詳細は [rpi-pinout_manual](manuals/pinout_manual.md) を参照すること．
+詳細は [pinout_manual](manuals/pinout_manual.md) を参照すること．
 
 ### その他のRaspberry PIの設定方法
 詳細は [rpi_manual](manuals/rpi_manual.md) を参照すること．
