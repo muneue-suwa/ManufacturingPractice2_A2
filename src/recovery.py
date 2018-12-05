@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Dec  5 17:45:25 2018
+
+@author: crantu
+"""
+
+from time import sleep
+
+from tb6612fng import TB6612FNG
+from read_pincfg import ReadPinFig
+from read_freqcfg import ReadFreqFig
+from read_setting_json import Setting
+
+pin_fig = ReadPinFig()
+freq_fig = ReadFreqFig()
+setting_time = Setting("time")
+
+
+class Recovery:
+    def __init__(self):
+        self.motor_moveconv = TB6612FNG(pin_fig_in1=pin_fig.moveconv_motorin1,
+                                        pin_fig_in2=pin_fig.moveconv_motorin2,
+                                        pin_fig_pwm=pin_fig.moveconv_motorpwm,
+                                        frequency=freq_fig.moveconv_frequency)
+
+        self.motor_destconv = TB6612FNG(pin_fig_in1=pin_fig.destconv_motorin1,
+                                        pin_fig_in2=pin_fig.destconv_motorin2,
+                                        pin_fig_pwm=pin_fig.destconv_motorpwm,
+                                        frequency=freq_fig.destconv_frequency)
+
+    def main(self):
+        self.motor_moveconv.ccw()
+        sleep(float(setting_time.setting_json["fire_and_conveyor"]
+                                             ["move_conveyor"]
+                                             ["operation_time"]))
+        self.motor_destconv.stop_and_close()
+        self.motor_destconv.cww()
+        sleep(float(setting_time.setting_json["fire_and_conveyor"]
+                                             ["destroy_coveyor"]
+                                             ["operation_time"]))
+        self.motor_destconv.stop_and_close()
+
+
+if __name__ == "__main__":
+    recovery = Recovery()
+    recovery.main()
