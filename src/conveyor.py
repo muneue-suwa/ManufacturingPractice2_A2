@@ -8,7 +8,9 @@ Created on Tue Oct 30 23:36:10 2018
 
 from tb6612fng import TB6612FNG
 from read_pincfg import ReadPinFig
+from read_freqcfg import ReadFreqFig
 pin_fig = ReadPinFig()
+freq_fig = ReadFreqFig()
 
 
 class Conveyor:
@@ -16,7 +18,8 @@ class Conveyor:
         self.motor_moveconv = TB6612FNG(pin_fig_in1=pin_fig.moveconv_motorin1,
                                         pin_fig_in2=pin_fig.moveconv_motorin2,
                                         pin_fig_pwm=pin_fig.moveconv_motorpwm,
-                                        frequency=100)
+                                        frequency=freq_fig.moveconv_frequency)
+
     def on(self):
         self.motor_moveconv.cw()
         print("conveyor on")

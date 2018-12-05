@@ -8,7 +8,9 @@ Created on Tue Oct 30 23:53:09 2018
 
 from tb6612fng import TB6612FNG
 from read_pincfg import ReadPinFig
+from read_freqcfg import ReadFreqFig
 pin_fig = ReadPinFig()
+freq_fig = ReadFreqFig()
 
 
 class DestroyCoveyor:
@@ -16,7 +18,7 @@ class DestroyCoveyor:
         self.motor_destconv = TB6612FNG(pin_fig_in1=pin_fig.destconv_motorin1,
                                         pin_fig_in2=pin_fig.destconv_motorin2,
                                         pin_fig_pwm=pin_fig.destconv_motorpwm,
-                                        frequency=100)
+                                        frequency=freq_fig.destconv_frequency)
 
     def on(self):
         self.motor_destconv.cw()
