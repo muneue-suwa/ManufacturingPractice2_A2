@@ -1,3 +1,5 @@
+#!/bin/bash
+
 INSTALL_SH_FILENAME=`readlink -f $0`
 INSTALL_SH_DIRNAME=`dirname $INSTALL_SH_FILENAME`
 
