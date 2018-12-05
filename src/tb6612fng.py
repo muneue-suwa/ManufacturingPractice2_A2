@@ -71,7 +71,7 @@ class TB6612FNG:
     def cw(self):
         pass
 
-    def cww(self):
+    def ccw(self):
         pass
 
     def stop(self):
