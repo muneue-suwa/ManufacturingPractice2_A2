@@ -32,15 +32,19 @@ class Recovery:
 
     def main(self):
         self.motor_moveconv.ccw()
+        print("START motor_moveconv.cww()")
         sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                              ["move_conveyor"]
                                              ["operation_time"]))
         self.motor_destconv.stop_and_close()
+        print("END motor_moveconv.cww()")
         self.motor_destconv.cww()
+        print("START motor_destconv.cww()")
         sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                              ["destroy_coveyor"]
                                              ["operation_time"]))
         self.motor_destconv.stop_and_close()
+        print("END motor_destconv.cww()")
 
 
 if __name__ == "__main__":
