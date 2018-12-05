@@ -36,7 +36,7 @@ class Recovery:
         sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                              ["move_conveyor"]
                                              ["operation_time"]))
-        self.motor_destconv.stop_and_close()
+        self.motor_moveconv.stop_and_close()
         print("END motor_moveconv.ccw()")
         self.motor_destconv.ccw()
         print("START motor_destconv.ccw()")
