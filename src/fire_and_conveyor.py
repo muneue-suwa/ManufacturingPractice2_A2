@@ -14,8 +14,6 @@ from remove_stopper import RemoveStopper
 from time_calculator import fire_and_conveyor_time
 from sort_functions import SortFunctions
 from delay_and_run import DelayAndRun
-# from read_setting_json import Setting
-# pin_fig = Setting("pin")
 
 
 class FireAndConveyor:
