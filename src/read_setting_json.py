@@ -31,9 +31,6 @@ class Setting:
             setting_data = json.load(f)
         return setting_data
 
-# {'encrypt': {'input': ['~/my_alias', '~/.bashrc'], 'output': '~/'},
-#  'key': {'public_key': 'key/public_key', 'secret_key': 'key/secret_key'}}
-
 
 if __name__ == "__main__":
     setting = Setting("time")
