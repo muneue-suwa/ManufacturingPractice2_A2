@@ -24,19 +24,22 @@ class TB6612FNG:
                                        frequency=frequency)
 
     def cw(self):
+        self.in1.on()
+        self.in2.off()
         self.pwm.on()
-        self.digital_cw()
 
     def ccw(self):
+        self.in1.off()
+        self.in2.on()
         self.pwm.on()
-        self.digital_ccw()
 
     def stop(self):
+        self.in1.off()
+        self.in2.off()
         self.pwm.off()
-        self.digital_stop()
 
     def stop_and_close(self):
-        self.pwm_stop()
+        self.stop()
         self.in1.close()
         self.in2.close()
         self.pwm.close()
