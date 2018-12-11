@@ -4,7 +4,7 @@
 ダウンロード，インストールを行う．
 ```shell-session:install_gdrive-linux-rpi
 cd ~ && \
-curl -JLO https://docs.google.com/uc?id=0B3X9GlR6EmbnVXNLanp4ZFRRbzg&export=download && \
+curl -JLO "https://docs.google.com/uc?id=0B3X9GlR6EmbnVXNLanp4ZFRRbzg&export=download" && \
 sudo mv gdrive-linux-rpi /usr/local/bin/ && \
 sudo chmod +x /usr/local/bin/gdrive-linux-rpi && \
 echo -e '#!/bin/sh\n\ngdrive-linux-rpi $@' | sudo tee /usr/local/bin/gdrive && \
