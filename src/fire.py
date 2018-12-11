@@ -6,21 +6,33 @@ Created on Tue Oct 30 23:34:15 2018
 @author: crantu
 """
 
-from gpiozero import LED
+from gpiozero import LED, DigitalOutputDevice
 from read_pincfg import ReadPinFig
 pin_fig = ReadPinFig()
 
 
 class Fire:
-    def __init__(self):
-        self.led_fire = LED(pin_fig.fire_led)
-        # print(self.led_fire)
+    def __init__(self, mode="rpi"):
+        if mode == "arduino" or mode == "Arduino":
+            self.arduino_fire = DigitalOutputDevice(pin_fig.fire_led)
+            self.on = self.arduino_fire_on_off()
+            self.off = self.arduino_fire_on_off()
+        else:
+            self.led_fire = LED(pin_fig.fire_led)
+            self.on = self.rpi_fire_on()
+            self.off = self.rpi_fire_off()
 
-    def on(self):
+    def arduino_fire_on_off(self):
+        self.arduino_fire.on()
+        sleep(2)
+        self.arduino_fire.off()
+        self.arduino_fire.close()
+
+    def rpi_fire_on(self):
         self.led_fire.blink(on_time=0.1, off_time=0.1)
         print("fire on")
 
-    def off(self):
+    def rpi_fire_off(self):
         self.led_fire.off()
         print("fire off")
 
