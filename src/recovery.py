@@ -8,6 +8,7 @@ Created on Wed Dec  5 17:45:25 2018
 
 from time import sleep
 
+from gpiozero import Servo
 from tb6612fng import TB6612FNG
 from read_pincfg import ReadPinFig
 from read_freqcfg import ReadFreqFig
@@ -45,6 +46,11 @@ class Recovery:
                                              ["operation_time"]))
         self.motor_destconv.stop_and_close()
         print("END motor_destconv.ccw()")
+        print("START stopper recovery")
+        self.servo = Servo(pin_fig.remove_stopperservo)
+        self.servo.min()
+        sleep(1)
+        print("END stopper recovery")
 
 
 if __name__ == "__main__":
