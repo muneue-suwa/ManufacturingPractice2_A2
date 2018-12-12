@@ -24,9 +24,9 @@ class Fire:
 
     def arduino_fire_on_off(self):
         self.arduino_fire.on()
-        sleep(2)
+        sleep(0.4)
         self.arduino_fire.off()
-        self.arduino_fire.close()
+        # self.arduino_fire.close()
 
     def rpi_fire_on(self):
         self.led_fire.blink(on_time=0.1, off_time=0.1)
@@ -41,10 +41,10 @@ if __name__ == "__main__":
     from time import sleep
     from read_setting_json import Setting
     setting_time = Setting("time")
-    fire = Fire()
+    fire = Fire("Arduino")
     fire.on()
     # sleep(float(setting_time.setting_json["fire_and_conveyor"]
     #                                      ["describe_fire"]
     #                                      ["operation_time"]))
-    sleep(60)
+    sleep(10)
     fire.off()
