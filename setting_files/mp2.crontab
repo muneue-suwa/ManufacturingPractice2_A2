@@ -1,1 +1,0 @@
-@reboot bash /home/pi/Git/ManufacturingPractice2_A2/start.sh >> /home/pi/Git/ManufacturingPractice2_A2/log/mp2_cron_$(date +\%Y\%m\%d_\%H\%M\%S).log 2>&1
