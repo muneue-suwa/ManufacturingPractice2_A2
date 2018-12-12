@@ -20,7 +20,7 @@ class RemoveStopper:
 
     def on(self):
         self.servo.value = 0.4
-        sleep(1)
+        # sleep(1)
         print("remove stopper on")
 
     def off(self):
@@ -31,12 +31,8 @@ if __name__ == "__main__":
     from read_setting_json import Setting
     setting_time = Setting("time")
     rs = RemoveStopper()
-    print("wating...")
-    for i in range(10):
-        print("{}, ".format(i), end="")
-        sleep(1)
-    print("")
     rs.on()
-    # sleep(float(setting_time.setting_json["fire_and_conveyor"]
-    #                                      ["remove_stopper"]
-    #                                      ["operation_time"]))
+    sleep(float(setting_time.setting_json["fire_and_conveyor"]
+                                         ["remove_stopper"]
+                                         ["operation_time"]))
+    rs.off()
