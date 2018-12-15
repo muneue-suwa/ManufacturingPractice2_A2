@@ -14,8 +14,8 @@ import subprocess
 
 class ShutdownButton:
     def __init__(self):
-        self.boot_led = LED(4)
-        self.shutdown_button = Button(2)
+        self.boot_led = LED(13)
+        self.shutdown_button = Button(19)
 
     def say_hello(self):
         print("Hello!")
