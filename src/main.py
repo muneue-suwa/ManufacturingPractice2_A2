@@ -32,7 +32,7 @@ def get_option():
 
 def main():
     audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
-    fire = Fire()
+    fire = Fire("Arduino")
     fc = FireAndConveyor(audiofiles_dir=audiodir)
     ee = ExplodeAndEscape(audiofiles_dir=audiodir)
 
