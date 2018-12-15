@@ -38,8 +38,10 @@ class ReadPinFig:
         self.first_button = config.getint("button", "first_button")
         self.second_button = config.getint("button", "second_button")
         self.shutdown_button = config.getint("shutdown_button",
-                                              "shutdown_button")
+                                             "shutdown_button")
         self.boot_led = config.getint("shutdown_button", "boot_led")
+        self.status_led_1 = config.getint("status_led", "status_led_1")
+        self.status_led_2 = config.getint("status_led", "status_led_2")
 
     def show(self):
         print("self.fire_led: {}".format(self.fire_led))
@@ -59,6 +61,8 @@ class ReadPinFig:
         print("self.second_button: {}".format(self.second_button))
         print("self.shutdown_button: {}".format(self.shutdown_button))
         print("self.boot_led: {}".format(self.boot_led))
+        print("self.status_led_1: {}".format(self.status_led_1))
+        print("self.status_led_2: {}".format(self.status_led_2))
 
 
 if __name__ == "__main__":
