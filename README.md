@@ -38,6 +38,9 @@ sh ManufacturingPractice2_A2/install.sh
 ### PinOut
 詳細は [pinout_manual](manuals/pinout_manual.md) を参照すること．
 
+### Arduino
+詳細は [ManufacturingPractice2_A2_ard_sketch_GitHub](https://github.com/sik103/ManufacturingPractice2_A2_ard_sketch) を参照すること．
+
 ### その他のRaspberry PIの設定方法
 詳細は [rpi_manual](manuals/rpi_manual.md) を参照すること．
 
