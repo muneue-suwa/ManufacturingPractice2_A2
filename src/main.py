@@ -27,6 +27,8 @@ def get_option():
     argparser.add_argument('-e', '--waitforenter', type=bool,
                            default=False,
                            help='Wait for ENTER key instead of button press')
+    argparser.add_argument('-l', '--loop', type=bool,
+                           default=True)
     return argparser.parse_args()
 
 
@@ -66,6 +68,9 @@ def main():
         print("{:.3f} sec: ".format(time() - init_time), end="")
 
     print("end")
+
+    if option.loop is True:
+        main()
 
 
 if __name__ == "__main__":
