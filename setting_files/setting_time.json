@@ -6,7 +6,7 @@
         },
         "move_conveyor":{
             "beginning_time":"5",
-            "operation_time":"8"
+            "operation_time":"20"
         },
         "destroy_coveyor":{
             "beginning_time":"2",
@@ -23,7 +23,7 @@
             "operation_time":"4"
         },
         "launch_balls":{
-            "beginning_time":"8",
+            "beginning_time":"4",
             "operation_time":"5"
         }
     }
