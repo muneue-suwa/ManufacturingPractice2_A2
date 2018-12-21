@@ -5,9 +5,10 @@ CMDNAME=`basename $0`
 for OPT in "$@"
 do
   case $OPT in
-    "-t" | "-finishtime" ) FLG_T="TRUE" ;;
-    "-s" | "-saveoutput" ) FLG_S="TRUE" ;;
-    "-e" | "-waitforenter" ) FLG_E="TRUE" ;;
+    "-t" | "--finishtime" ) FLG_T="TRUE" ;;
+    "-s" | "--saveoutput" ) FLG_S="TRUE" ;;
+    "-e" | "--waitforenter" ) FLG_E="TRUE" ;;
+    "-l" | "--loop" ) FLG_L="TRUE" ;;
       * ) echo "Usage: $CMDNAME [-t -finishtime] [-s -saveoutput] [-e -waitforenter]" 1>&2
           exit 1 ;;
   esac
@@ -20,24 +21,28 @@ LOG_FILE_NAME="$MAIN_PY_DIRNAME/log/mp2_shell_$(date +\%Y\%m\%d_\%H\%M\%S).log"
 
 cd $MAIN_PY_DIRNAME
 mkdir -p $MAIN_PY_DIRNAME/log
-if [ "$FLG_S" = "TRUE" ]; then
-  if [ "$FLG_T" = "TRUE" -a "$FLG_E" = "TRUE" ] ; then
-    python3 -u $MAIN_PY_FILENAME -t True -e True | tee $LOG_FILE_NAME
-  elif [ "$FLG_T" = "TRUE" ] ; then
-    python3 -u $MAIN_PY_FILENAME -t True | tee $LOG_FILE_NAME
-  elif [ "$FLG_E" = "TRUE" ] ; then
-    python3 -u $MAIN_PY_FILENAME -e True | tee $LOG_FILE_NAME
-  else
-    python3 -u $MAIN_PY_FILENAME | tee $LOG_FILE_NAME
-  fi
+
+if [ "$FLG_T" = "TRUE" ]; then
+  OPTION_T="True"
 else
-  if [ "$FLG_T" = "TRUE" -a "$FLG_E" = "TRUE" ] ; then
-    python3 $MAIN_PY_FILENAME -t True -e True
-  elif [ "$FLG_T" = "TRUE" ] ; then
-    python3 $MAIN_PY_FILENAME -t True
-  elif [ "$FLG_E" = "TRUE" ] ; then
-    python3 $MAIN_PY_FILENAME -e True
-  else
-    python3 $MAIN_PY_FILENAME
-  fi
+  OPTION_T="False"
 fi
+if [ "$FLG_S" = "TRUE" ]; then
+  OPTION_S_BEFORE="-u"
+  OPTION_S_AFTER=" | tee $LOG_FILE_NAME"
+else
+  OPTION_S_BEFORE=""
+  OPTION_S_AFTER=""
+fi
+if [ "$FLG_E" = "TRUE" ]; then
+  OPTION_E="True"
+else
+  OPTION_E="False"
+fi
+if [ "$FLG_L" = "TRUE" ]; then
+  OPTION_L="True"
+else
+  OPTION_L="False"
+fi
+
+python3 $OPTION_S_BEFORE $MAIN_PY_FILENAME -t $OPTION_T -e $OPTION_E -l $OPTION_L $OPTION_S_AFTER
