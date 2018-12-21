@@ -61,8 +61,8 @@ def main():
     if option.waitforenter:
         input("Waiting for ENTER key instead of BUTTON2: ")
     else:
-        second_button.wait_for_press()
         print("Waiting for BUTTON2 press")
+        second_button.wait_for_press()
     ee.main(init_time)
     sleep(5)
     fire.off()
