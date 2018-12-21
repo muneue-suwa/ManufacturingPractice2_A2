@@ -6,6 +6,7 @@ Created on Tue Oct 30 23:34:15 2018
 @author: crantu
 """
 
+from time import sleep
 from gpiozero import LED, DigitalOutputDevice
 from read_pincfg import ReadPinFig
 pin_fig = ReadPinFig()
