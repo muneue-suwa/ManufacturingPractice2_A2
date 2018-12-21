@@ -18,7 +18,7 @@ class Conveyor:
         self.motor_moveconv = TB6612FNG(pin_fig_in1=pin_fig.moveconv_motorin1,
                                         pin_fig_in2=pin_fig.moveconv_motorin2,
                                         pin_fig_pwm=pin_fig.moveconv_motorpwm,
-                                        frequency=freq_fig.moveconv_frequency)
+                                        frequency=None)
 
     def on(self):
         self.motor_moveconv.cw()
