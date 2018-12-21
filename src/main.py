@@ -6,7 +6,7 @@ Created on Wed Oct 24 20:56:58 2018
 @author: crantu
 """
 
-from gpiozero import Button
+from gpiozero import Button, LED
 from os import path
 from argparse import ArgumentParser
 from time import time, sleep
@@ -40,9 +40,12 @@ def main():
 
     first_button = Button(pin_fig.first_button)
     second_button = Button(pin_fig.second_button)
+    main_status_led = LED(pin_fig.status_led_2)
+    recovery_staus_led = LED(pin_fig.status_led_1)
 
     option = get_option()
 
+    main_status_led.on()
     print("start")
 
     if option.waitforenter:
@@ -50,6 +53,7 @@ def main():
     else:
         print("Waiting for BUTTON1 press")
         first_button.wait_for_press()
+    main_status_led.blink()
     init_time = time()
     fire.on()
     fc.main(init_time)
@@ -66,7 +70,7 @@ def main():
     if option.finishtime:
         input("Press ENTER key to measure finish time: ")
         print("{:.3f} sec: ".format(time() - init_time), end="")
-
+    main_status_led.off()
     print("end")
 
     if option.loop is True:
