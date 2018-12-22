@@ -21,11 +21,9 @@ destconv = DestroyCoveyor()
 rmstopper = RemoveStopper()
 
 
-class Recovery:
+class Recovery(Conveyor, DestroyCoveyor, RemoveStopper):
     def __init__(self):
-        self.motor_moveconv = moveconv.motor_moveconv
-        self.motor_destconv = destconv.motor_destconv
-        self.servo = rmstopper.servo
+        super().__init__()
 
     def main(self):
         self.motor_moveconv.ccw()
