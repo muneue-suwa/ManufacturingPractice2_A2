@@ -12,6 +12,7 @@ from os import path
 from read_pincfg import ReadPinFig
 pin_fig = ReadPinFig()
 
+
 class Siren:
     def __init__(self, audiofiles_dir):
         self.led_siren = LED(pin_fig.siren_led)

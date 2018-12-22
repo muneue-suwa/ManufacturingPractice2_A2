@@ -19,13 +19,12 @@ setting_time = Setting("time")
 
 class Recovery:
     def __init__(self):
-        # self.servo = remove_stopper.servo
         pass
 
     def main(self):
         conveyor = Conveyor()
-        destroy_conveyor = DestroyCoveyor()  # temp
-        remove_stopper = RemoveStopper()  # temp
+        destroy_conveyor = DestroyCoveyor()
+        remove_stopper = RemoveStopper()
 
         self.motor_moveconv = conveyor.motor_moveconv
         self.motor_destconv = destroy_conveyor.motor_destconv

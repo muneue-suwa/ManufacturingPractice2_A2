@@ -84,7 +84,7 @@ class MP2_A2:
         self.recovery = Recovery()
         # Recovery Robot
         sleep_time = 0.1
-        
+
         self.recovery_staus_led.on()
         print("Waiting for BUTTON1 press")
         self.first_button.wait_for_press()
