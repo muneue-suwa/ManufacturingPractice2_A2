@@ -59,16 +59,18 @@ class MP2_A2:
             self.first_button.wait_for_press()
 
         print("move_robot start")
-        self.main_status_led.blink()
+        self.main_status_led.blink(on_time=1, off_time=2)
         init_time = time()
         self.fire.on()
         self.fc.main(init_time)
 
+        self.main_status_led.blink(on_time=0.5, off_time=0.5)
         if self.option.waitforenter:
             input("Waiting for ENTER key instead of BUTTON2: ")
         else:
             print("Waiting for BUTTON2 press")
             self.second_button.wait_for_press()
+
         self.ee.main(init_time)
         sleep(5)
         self.fire.off()
@@ -96,7 +98,7 @@ class MP2_A2:
             sleep(sleep_time)
         if press_button_time < 2 / sleep_time:
             print("recovery_robot start")
-            self.recovery_staus_led.blink()
+            self.recovery_staus_led.blink(on_time=1, off_time=2)
             self.recovery.main()
             print("recovery_robot end")
             self.recovery_staus_led.off()
