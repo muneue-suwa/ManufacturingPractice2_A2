@@ -8,8 +8,8 @@ do
     "-t" | "--finishtime" ) FLG_T="TRUE" ;;
     "-s" | "--saveoutput" ) FLG_S="TRUE" ;;
     "-e" | "--waitforenter" ) FLG_E="TRUE" ;;
-    "-l" | "--loop" ) FLG_L="TRUE" ;;
-      * ) echo "Usage: $CMDNAME [-t -finishtime] [-s -saveoutput] [-e -waitforenter]" 1>&2
+    "-nl" | "--no-loop" ) FLG_NL="TRUE" ;;
+      * ) echo "Usage: $CMDNAME [-t --finishtime] [-s --saveoutput] [-e --waitforenter] [-nl --no-loop]" 1>&2
           exit 1 ;;
   esac
 done
@@ -23,9 +23,9 @@ cd $MAIN_PY_DIRNAME
 mkdir -p $MAIN_PY_DIRNAME/log
 
 if [ "$FLG_T" = "TRUE" ]; then
-  OPTION_T="-t True"
+  OPTION_T="-t"
 else
-  OPTION_T="-t False"
+  OPTION_T=""
 fi
 if [ "$FLG_S" = "TRUE" ]; then
   OPTION_S_BEFORE="-u"
@@ -35,14 +35,14 @@ else
   OPTION_S_AFTER=""
 fi
 if [ "$FLG_E" = "TRUE" ]; then
-  OPTION_E="-e True"
+  OPTION_E="-e"
 else
-  OPTION_E="-e False"
+  OPTION_E=""
 fi
-if [ "$FLG_L" = "TRUE" ]; then
-  OPTION_L="-l True"
+if [ "$FLG_NL" = "TRUE" ]; then
+  OPTION_L="-nl"
 else
-  OPTION_L="-l False"
+  OPTION_L=""
 fi
 
 # echo "python3 $OPTION_S_BEFORE $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L $OPTION_S_AFTER"

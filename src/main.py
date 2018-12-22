@@ -34,15 +34,16 @@ class MP2_A2:
 
     def get_option(self):
         argparser = ArgumentParser()
-        argparser.add_argument('-t', '--finishtime', type=bool,
-                               default=False,
+        argparser.add_argument('-t', '--finishtime', action='store_true',
                                help='Measure finish time')
-        argparser.add_argument('-e', '--waitforenter', type=bool,
-                               default=False,
+                                # default is False
+        argparser.add_argument('-e', '--waitforenter', action='store_true',
                                help=('Wait for ENTER key '
                                      'instead of button press'))
-        argparser.add_argument('-l', '--loop', type=bool,
-                               default=True)
+                                # default is False
+        argparser.add_argument('-nl', '--no-loop', action='store_true',
+                               help='Loop this script')
+                                # default is False
         self.option = argparser.parse_args()
 
     def move_robot(self):
@@ -53,9 +54,9 @@ class MP2_A2:
         self.main_status_led.on()
 
         if self.option.waitforenter:
-            input("Waiting for ENTER key instead of BUTTON1: ")
+            input("Waiting for ENTER key instead of BUTTON1 (first section): ")
         else:
-            print("Waiting for BUTTON1 press")
+            print("Waiting for BUTTON1 press (first section)")
             self.first_button.wait_for_press()
 
         print("move_robot start")
@@ -66,11 +67,12 @@ class MP2_A2:
 
         self.main_status_led.blink(on_time=0.5, off_time=0.5)
         if self.option.waitforenter:
-            input("Waiting for ENTER key instead of BUTTON2: ")
+            input("Waiting for ENTER key instead of BUTTON2 (second section): ")
         else:
-            print("Waiting for BUTTON2 press")
+            print("Waiting for BUTTON2 press (second section)")
             self.second_button.wait_for_press()
 
+        self.main_status_led.blink(on_time=1, off_time=2)
         self.ee.main(init_time)
         sleep(5)
         self.fire.off()
@@ -88,7 +90,7 @@ class MP2_A2:
         sleep_time = 0.1
 
         self.recovery_staus_led.on()
-        print("Waiting for BUTTON1 press")
+        print("Waiting for BUTTON1 press (recovery section)")
         self.first_button.wait_for_press()
         press_button_time = 0
         while self.first_button.is_pressed:
@@ -109,7 +111,7 @@ class MP2_A2:
         self.move_robot()
         self.recovery_robot()
         # Start main() again for loop
-        if self.option.loop:
+        if not self.option.no_loop:
             self.main()
 
 
