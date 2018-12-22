@@ -30,27 +30,27 @@ class Recovery:
         self.motor_destconv = destroy_conveyor.motor_destconv
         self.servo = remove_stopper.servo
 
-        print("START motor_destconv.ccw()")
+        print("START motor_destconv initializing")
         self.motor_destconv.ccw()
         sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                              ["destroy_coveyor"]
                                              ["operation_time"]))
         self.motor_destconv.stop_and_close()
-        print("END motor_destconv.ccw()")
+        print("END motor_destconv initializing")
 
-        print("START motor_moveconv.ccw()")
+        print("START motor_moveconv initializing")
         self.motor_moveconv.ccw()
         sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                              ["move_conveyor"]
                                              ["operation_time"]))
         self.motor_moveconv.stop_and_close()
-        print("END motor_moveconv.ccw()")
+        print("END motor_moveconv initializing")
 
-        print("START stopper recovery")
+        print("START stopper initializing")
         self.servo.min()
         sleep(1)
         self.servo.close()
-        print("END stopper recovery")
+        print("END stopper initializing")
 
 
 if __name__ == "__main__":
