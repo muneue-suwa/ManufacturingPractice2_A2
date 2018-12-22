@@ -25,7 +25,7 @@ mkdir -p $MAIN_PY_DIRNAME/log
 if [ "$FLG_T" = "TRUE" ]; then
   OPTION_T="-t True"
 else
-  OPTION_T=""
+  OPTION_T="-t False"
 fi
 if [ "$FLG_S" = "TRUE" ]; then
   OPTION_S_BEFORE="-u"
@@ -37,15 +37,13 @@ fi
 if [ "$FLG_E" = "TRUE" ]; then
   OPTION_E="-e True"
 else
-  OPTION_E=""
+  OPTION_E="-e False"
 fi
 if [ "$FLG_L" = "TRUE" ]; then
   OPTION_L="-l True"
 else
-  OPTION_L=""
+  OPTION_L="-l False"
 fi
 
-echo "python3 $OPTION_S_BEFORE $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L $OPTION_S_AFTER"
+# echo "python3 $OPTION_S_BEFORE $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L $OPTION_S_AFTER"
 python3 $OPTION_S_BEFORE $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L $OPTION_S_AFTER
-
-
