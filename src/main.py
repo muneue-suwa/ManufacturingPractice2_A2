@@ -20,92 +20,94 @@ from read_pincfg import ReadPinFig
 pin_fig = ReadPinFig()
 
 
-def get_option():
-    argparser = ArgumentParser()
-    argparser.add_argument('-t', '--finishtime', type=bool,
-                           default=False,
-                           help='Measure finish time')
-    argparser.add_argument('-e', '--waitforenter', type=bool,
-                           default=False,
-                           help='Wait for ENTER key instead of button press')
-    argparser.add_argument('-l', '--loop', type=bool,
-                           default=True)
-    return argparser.parse_args()
+class MP2_A2:
+    def __init__(self):
+        # Preparing
+        audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
+        self.fire = Fire("Arduino")
+        self.fc = FireAndConveyor(audiofiles_dir=audiodir)
+        self.ee = ExplodeAndEscape(audiofiles_dir=audiodir)
+        self.recovery = Recovery()
 
+        self.first_button = Button(pin_fig.first_button)
+        self.second_button = Button(pin_fig.second_button)
+        self.main_status_led = LED(pin_fig.status_led_2)
+        self.recovery_staus_led = LED(pin_fig.status_led_1)
 
-def main():
-    # Preparing
-    audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
-    fire = Fire("Arduino")
-    fc = FireAndConveyor(audiofiles_dir=audiodir)
-    ee = ExplodeAndEscape(audiofiles_dir=audiodir)
-    recovery = Recovery()
+        self.get_option()
 
-    first_button = Button(pin_fig.first_button)
-    second_button = Button(pin_fig.second_button)
-    main_status_led = LED(pin_fig.status_led_2)
-    recovery_staus_led = LED(pin_fig.status_led_1)
+    def get_option(self):
+        argparser = ArgumentParser()
+        argparser.add_argument('-t', '--finishtime', type=bool,
+                               default=False,
+                               help='Measure finish time')
+        argparser.add_argument('-e', '--waitforenter', type=bool,
+                               default=False,
+                               help=('Wait for ENTER key '
+                                     'instead of button press'))
+        argparser.add_argument('-l', '--loop', type=bool,
+                               default=True)
+        self.option = argparser.parse_args()
 
-    option = get_option()
+    def move_robot(self):
+        # Move Robot
+        self.main_status_led.on()
 
-    # Main
-    main_status_led.on()
+        if self.option.waitforenter:
+            input("Waiting for ENTER key instead of BUTTON1: ")
+        else:
+            print("Waiting for BUTTON1 press")
+            self.first_button.wait_for_press()
 
-    if option.waitforenter:
-        input("Waiting for ENTER key instead of BUTTON1: ")
-    else:
+        print("move_robot start")
+        self.main_status_led.blink()
+        init_time = time()
+        self.fire.on()
+        self.fc.main(init_time)
+
+        if self.option.waitforenter:
+            input("Waiting for ENTER key instead of BUTTON2: ")
+        else:
+            print("Waiting for BUTTON2 press")
+            self.second_button.wait_for_press()
+        self.ee.main(init_time)
+        sleep(5)
+        self.fire.off()
+        print("move_robot end")
+
+        if self.option.finishtime:
+            input("Press ENTER key to measure finish time: ")
+            print("{:.3f} sec: ".format(time() - init_time), end="")
+        self.main_status_led.off()
+
+    def recovery_robot(self):
+        # Recovery Robot
+        sleep_time = 0.1
+        print("recovery_robot start")
+        self.recovery_staus_led.on()
         print("Waiting for BUTTON1 press")
-        first_button.wait_for_press()
+        self.first_button.wait_for_press()
+        press_button_time = 0
+        while self.first_button.is_pressed:
+            press_button_time += 1
+            if press_button_time >= 2.0 / sleep_time:
+                self.recovery_staus_led.off()
+            sleep(sleep_time)
+        if press_button_time < 2 / sleep_time:
+            self.recovery.main()
+            print("recovery_robot end")
+        else:
+            print("recovery was skipped\n recovery_robot end")
+        self.recovery_staus_led.off()
 
-    print("Main start")
-    main_status_led.blink()
-    init_time = time()
-    fire.on()
-    fc.main(init_time)
-
-    if option.waitforenter:
-        input("Waiting for ENTER key instead of BUTTON2: ")
-    else:
-        print("Waiting for BUTTON2 press")
-        second_button.wait_for_press()
-    ee.main(init_time)
-    sleep(5)
-    fire.off()
-    print("Main end")
-
-    if option.finishtime:
-        input("Press ENTER key to measure finish time: ")
-        print("{:.3f} sec: ".format(time() - init_time), end="")
-    main_status_led.off()
-
-    # Recovery
-    recovery_staus_led.on()
-    if option.waitforenter:
-        input("Waiting for ENTER key instead of BUTTON1: ")
-    else:
-        print("Waiting for BUTTON1 press")
-        first_button.wait_for_press()
-    press_button_time = time()
-
-    if option.waitforenter:
-        input("Waiting for ENTER key instead of BUTTON1: ")
-    else:
-        print("Waiting for BUTTON1 release")
-        first_button.wait_for_release()
-
-    if (time() - press_button_time) < 1:
-        print("Recovery start")
-        recovery_staus_led.blink()
-        recovery.main()
-        print("Recovery end")
-    else:
-        print("Recovery was skipped")
-    recovery_staus_led.off()
-
-    # Start main() again for loop
-    if option.loop:
-        main()
+    def main(self):
+        self.move_robot()
+        self.recovery_robot()
+        # Start main() again for loop
+        if self.option.loop:
+            self.main()
 
 
 if __name__ == "__main__":
-    main()
+    mp2_a2 = MP2_A2()
+    mp2_a2.main()
