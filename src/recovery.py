@@ -16,17 +16,20 @@ from remove_stopper import RemoveStopper
 
 setting_time = Setting("time")
 
-moveconv = Conveyor()
-destconv = DestroyCoveyor()
-rmstopper = RemoveStopper()
 
-
-class Recovery(Conveyor, DestroyCoveyor, RemoveStopper):
+class Recovery:
     def __init__(self):
-        super().__init__()
+        # self.servo = remove_stopper.servo
+        pass
 
     def main(self):
-        self.motor_moveconv.ccw()
+        conveyor = Conveyor()
+        destroy_conveyor = DestroyCoveyor()  # temp
+        remove_stopper = RemoveStopper()  # temp
+
+        self.motor_moveconv = conveyor.motor_moveconv
+        self.motor_destconv = destroy_conveyor.motor_destconv
+        self.servo = remove_stopper.servo
         print("START motor_moveconv.ccw()")
         sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                              ["move_conveyor"]
@@ -43,6 +46,7 @@ class Recovery(Conveyor, DestroyCoveyor, RemoveStopper):
         print("START stopper recovery")
         self.servo.min()
         sleep(1)
+        self.servo.close()
         print("END stopper recovery")
 
 

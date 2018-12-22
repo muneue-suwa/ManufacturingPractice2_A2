@@ -29,6 +29,7 @@ class Explode:
     def off(self):
         self.mixer_explode.music.stop()
         self.led_explode.off()
+        self.led_explode.close()
         print("explode off")
 
 

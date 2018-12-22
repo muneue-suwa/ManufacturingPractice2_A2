@@ -30,6 +30,7 @@ class Siren:
     def off(self):
         self.mixer_siren.music.stop()
         self.led_siren.off()
+        self.led_siren.close()
         print("siren off")
 
 

@@ -23,12 +23,8 @@ pin_fig = ReadPinFig()
 class MP2_A2:
     def __init__(self):
         # Preparing
-        audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
+        self.audiodir = path.expanduser('~/Git/MP2_A2_audiofiles/AudioFiles')
         self.fire = Fire("Arduino")
-        self.fc = FireAndConveyor(audiofiles_dir=audiodir)
-        self.ee = ExplodeAndEscape(audiofiles_dir=audiodir)
-        self.recovery = Recovery()
-
         self.first_button = Button(pin_fig.first_button)
         self.second_button = Button(pin_fig.second_button)
         self.main_status_led = LED(pin_fig.status_led_2)
@@ -50,6 +46,9 @@ class MP2_A2:
         self.option = argparser.parse_args()
 
     def move_robot(self):
+        # Preparing
+        self.fc = FireAndConveyor(audiofiles_dir=self.audiodir)
+        self.ee = ExplodeAndEscape(audiofiles_dir=self.audiodir)
         # Move Robot
         self.main_status_led.on()
 
@@ -81,9 +80,11 @@ class MP2_A2:
         self.main_status_led.off()
 
     def recovery_robot(self):
+        # Preparing
+        self.recovery = Recovery()
         # Recovery Robot
         sleep_time = 0.1
-        print("recovery_robot start")
+        
         self.recovery_staus_led.on()
         print("Waiting for BUTTON1 press")
         self.first_button.wait_for_press()
@@ -94,11 +95,13 @@ class MP2_A2:
                 self.recovery_staus_led.off()
             sleep(sleep_time)
         if press_button_time < 2 / sleep_time:
+            print("recovery_robot start")
+            self.recovery_staus_led.blink()
             self.recovery.main()
             print("recovery_robot end")
+            self.recovery_staus_led.off()
         else:
-            print("recovery was skipped\n recovery_robot end")
-        self.recovery_staus_led.off()
+            print("recovery was skipped")
 
     def main(self):
         self.move_robot()

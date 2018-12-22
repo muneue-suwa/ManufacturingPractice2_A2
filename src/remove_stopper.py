@@ -24,6 +24,7 @@ class RemoveStopper:
         print("remove stopper on")
 
     def off(self):
+        self.servo.close()
         print("remove stopper off")
 
 
