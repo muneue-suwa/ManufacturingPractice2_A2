@@ -21,62 +21,63 @@ $ python3 --version
 Python 3.5.3
 ```
 ## 準備
-### スクリプトのダウンロードと追加パッケージのインストール
+### ハードウェア
+#### PinOut
+詳細は [pinout_manual](manuals/pinout_manual.md) を参照すること．
+
+### ソフトウェア
+#### スクリプトのダウンロードと追加パッケージのインストール
 以下のコードをコピペする．
 
 ```bash:install_mp2_a2
 mkdir -p $HOME/Git && \
 cd $HOME/Git && \
+sudo apt install -y python3-pygame python3-gpiozero git && \
 git clone https://github.com/sik103/ManufacturingPractice2_A2.git && \
-sudo apt install -y python3-pygame python3-gpiozero && \
 sh ManufacturingPractice2_A2/install.sh
 ```
 
-### gdriveの設定
+#### Arduino
+Arduino promini にスケッチをアップロードする．詳細は [ManufacturingPractice2_A2_ard_sketch_GitHub](https://github.com/sik103/ManufacturingPractice2_A2_ard_sketch) を参照すること．
+
+#### gdriveの設定と音源のダウンロード
 著作権等の問題により，GitHubへの音源の保存が難しいと思われるため，音源はGoogle driveに入れ，テスト環境と本番環境を同期化させる．詳細は [gdrive_manual](manuals/gdrive_manual.md) を参照すること．
-
-### PinOut
-詳細は [pinout_manual](manuals/pinout_manual.md) を参照すること．
-
-### Arduino
-詳細は [ManufacturingPractice2_A2_ard_sketch_GitHub](https://github.com/sik103/ManufacturingPractice2_A2_ard_sketch) を参照すること．
 
 ### その他のRaspberry PIの設定方法
 詳細は [rpi_manual](manuals/rpi_manual.md) を参照すること．
 
 ## 動作内容
+1. 光（火の元）を開始
 1. fire_and_conveyor
     1. スイッチ（センサー1）を押したら
-        1. 光（火）を開始：**開始時間**，**動作時間**
         1. 音，光（サイレン）を開始：**開始時間**，**動作時間**
             - 光：豆電球等で，クレーン車の上に
         1. ベルコン（モータ1）を開始：**開始時間**，**動作時間**
             - モータドライバ
-    1. 一定時間後にベルコン（モータ1）が止まる
     1. クレーンが倒れる
         1. クレーンを倒す（モータ2）: **開始時間**，**動作時間**
             - 糸を緊張させておいて，モータを若干回転させる
         1. ストッパーを外す（モータ3）: **開始時間**，**動作時間**
-            - 目立たないように，レールの下にストッパー
             - サーボモータで制御
 1. explode_and_escape
-    1. 爆発と脱出：センサー（センサー2）でスタート
+    1. センサー（センサー2）でスタート
         1. 音（爆発音）（とビーズを落とす） ~~と光（LED2）~~ ：**開始時間**，**動作時間**
-            - もしかしたら，ビーズの落下にソフトが必要かも
-        1. ジャンプ（モータ4）：**開始時間**，~~動作時間~~
+        1. ジャンプ（モータ4）：**開始時間**，**動作時間**
             - リレーを介して，ゴムを離す -> ガウス砲
+1. 一定時間後に光（火の元）を停止
 
 **太字**: setting_time.json
 
 ### 注意事項
 - 開始時間はすべて `センサー` を基準にする．（動作部がボールの動きと一致しないため）
 
-### オプション
+## オプション
 - `sh start.sh` に使用する．
 - 詳細
-    - `-finishtime`, `-t`: 動作時間を計測する．（python側で操作する）
-    - `-saveoutput`, `-s`: 標準出力をファイルに記録する．（shellscript側で操作する）
-    - `-waitforenter`, `-e`: `wait_for_press()` の代わりに `input()` を使用する．（python側で操作する）
+    - `--finishtime`, `-t`: 動作時間を計測する．
+    - `--saveoutput`, `-s`: 標準出力をファイルに記録する．
+    - `--waitforenter`, `-e`: Raspberry PI のセンサーの代わりにキーボードの `Enter` キーを使用する．
+    - `--no-loop`, `-nl`: スクリプトを一回だけ動作させる．
 - 使用例
     - `$ sh start.sh -t -e`: 動作時間を測定し，実行時に出力された標準出力をファイルに記録する．
 
