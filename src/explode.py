@@ -23,7 +23,7 @@ class Explode:
         self.mixer_explode.init()
         self.mixer_explode.music.load(siren_mp3_path)
         self.mixer_explode.music.play(1)
-        self.led_explode.blink()
+        self.led_explode.blink(on_time=0.05, off_time=0.05)
         print("explode on")
 
     def off(self):
