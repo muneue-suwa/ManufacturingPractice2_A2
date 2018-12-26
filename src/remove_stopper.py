@@ -19,7 +19,7 @@ class RemoveStopper:
         sleep(1)
 
     def on(self):
-        self.servo.value = 0.4
+        self.servo.value = -0.5
         # sleep(1)
         print("remove stopper on")
 
