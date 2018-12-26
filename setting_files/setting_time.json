@@ -6,7 +6,7 @@
         },
         "move_conveyor":{
             "beginning_time":"5",
-            "operation_time":"20"
+            "operation_time":"25"
         },
         "destroy_coveyor":{
             "beginning_time":"2",
