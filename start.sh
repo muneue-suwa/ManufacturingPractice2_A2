@@ -27,13 +27,6 @@ if [ "$FLG_T" = "TRUE" ]; then
 else
   OPTION_T=""
 fi
-if [ "$FLG_S" = "TRUE" ]; then
-  OPTION_S_BEFORE="-u"
-  OPTION_S_AFTER=" | tee $LOG_FILE_NAME"
-else
-  OPTION_S_BEFORE=""
-  OPTION_S_AFTER=""
-fi
 if [ "$FLG_E" = "TRUE" ]; then
   OPTION_E="-e"
 else
@@ -45,5 +38,8 @@ else
   OPTION_L=""
 fi
 
-# echo "python3 $OPTION_S_BEFORE $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L $OPTION_S_AFTER"
-python3 $OPTION_S_BEFORE $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L $OPTION_S_AFTER
+if [ "$FLG_S" = "TRUE" ]; then
+  python3 -u $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L | tee $LOG_FILE_NAME
+else
+  python3 $MAIN_PY_FILENAME $OPTION_T $OPTION_E $OPTION_L
+fi
