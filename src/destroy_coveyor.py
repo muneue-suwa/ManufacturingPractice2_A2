@@ -33,6 +33,9 @@ if __name__ == "__main__":
     from time import sleep
     from read_setting_json import Setting
     setting_time = Setting("time")
+    destconv = DestroyCoveyor()
+    destconv.on()
     sleep(float(setting_time.setting_json["fire_and_conveyor"]
                                          ["destroy_coveyor"]
                                          ["operation_time"]))
+    destconv.off()
