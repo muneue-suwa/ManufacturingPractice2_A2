@@ -74,7 +74,7 @@ class MP2_A2:
 
         self.main_status_led.blink(on_time=1, off_time=2)
         self.ee.main(init_time)
-        sleep(5)
+        sleep(1)
         self.fire.off()
         print("move_robot end")
 
