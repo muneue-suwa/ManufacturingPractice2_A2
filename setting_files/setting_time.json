@@ -1,19 +1,19 @@
 {
     "fire_and_conveyor":{
         "describe_fire_truck":{
-            "beginning_time":"3",
+            "beginning_time":"0",
             "operation_time":"12"
         },
         "move_conveyor":{
-            "beginning_time":"5",
-            "operation_time":"25"
+            "beginning_time":"10",
+            "operation_time":"60"
         },
         "destroy_coveyor":{
-            "beginning_time":"2",
-            "operation_time":"5"
+            "beginning_time":"45",
+            "operation_time":"0.7"
         },
         "remove_stopper":{
-            "beginning_time":"30",
+            "beginning_time":"47",
             "operation_time":"1"
         }
     },
