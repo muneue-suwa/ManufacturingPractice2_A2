@@ -6,24 +6,24 @@
         },
         "move_conveyor":{
             "beginning_time":"10",
-            "operation_time":"60"
+            "operation_time":"30"
         },
         "destroy_coveyor":{
-            "beginning_time":"45",
-            "operation_time":"0.7"
+            "beginning_time":"41",
+            "operation_time":"0.6"
         },
         "remove_stopper":{
-            "beginning_time":"47",
+            "beginning_time":"43",
             "operation_time":"1"
         }
     },
     "explode_and_escape":{
         "describe_explosion":{
-            "beginning_time":"2",
+            "beginning_time":"6",
             "operation_time":"4"
         },
         "launch_balls":{
-            "beginning_time":"4",
+            "beginning_time":"7",
             "operation_time":"5"
         }
     }
