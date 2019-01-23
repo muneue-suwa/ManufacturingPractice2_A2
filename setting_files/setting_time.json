@@ -9,21 +9,21 @@
             "operation_time":"30"
         },
         "destroy_coveyor":{
-            "beginning_time":"41",
+            "beginning_time":"43",
             "operation_time":"0.6"
         },
         "remove_stopper":{
-            "beginning_time":"43",
+            "beginning_time":"46",
             "operation_time":"1"
         }
     },
     "explode_and_escape":{
         "describe_explosion":{
-            "beginning_time":"6",
+            "beginning_time":"7",
             "operation_time":"4"
         },
         "launch_balls":{
-            "beginning_time":"7",
+            "beginning_time":"9",
             "operation_time":"5"
         }
     }
