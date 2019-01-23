@@ -25,6 +25,7 @@ class Siren:
         self.mixer_siren.init()
         self.mixer_siren.music.load(siren_mp3_path)  # 12sec
         self.mixer_siren.music.play(-1)
+        self.mixer_siren.music.set_volume(0.7)
         self.led_siren.blink(on_time=1, off_time=1)
         print("siren on")
 
