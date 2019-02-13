@@ -1,5 +1,6 @@
 #### インストール
-詳細は [gdrive](https://github.com/prasmussen/gdrive) を参照すること
+下記の `[URL]` などの詳細は [gdrive_GitHub](https://github.com/prasmussen/gdrive) を参照すること.
+
 ##### 本番環境
 ダウンロード，インストールを行う．
 ```shell-session:install_gdrive-linux-rpi
@@ -11,7 +12,7 @@ echo -e '#!/bin/sh\n\ngdrive-linux-rpi $@' | sudo tee /usr/local/bin/gdrive && \
 sudo chmod +x /usr/local/bin/gdrive && \
 gdrive about && \
 mkdir -p ~/Git/MP2_A2_audiofiles/AudioFiles && \
-gdrive sync download 1fsgg8db2atpJoXQcaFopyBxnHpK034YE ~/Git/MP2_A2_audiofiles/AudioFiles
+gdrive sync download [ID] ~/Git/MP2_A2_audiofiles/AudioFiles
 ```
 
 ##### テスト環境
@@ -25,7 +26,7 @@ echo -e '#!/bin/sh\n\ngdrive-linux-x64 $@' | sudo tee /usr/local/bin/gdrive && \
 sudo chmod +x /usr/local/bin/gdrive && \
 gdrive about && \
 mkdir -p ~/Git/MP2_A2_audiofiles/AudioFiles && \
-gdrive sync download 1fsgg8db2atpJoXQcaFopyBxnHpK034YE ~/Git/MP2_A2_audiofiles/AudioFiles
+gdrive sync download [ID] ~/Git/MP2_A2_audiofiles/AudioFiles
 ```
 
 ##### その他

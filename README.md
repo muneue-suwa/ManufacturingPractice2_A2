@@ -25,6 +25,9 @@ Python 3.5.3
 #### PinOut
 詳細は [pinout_manual](manuals/pinout_manual.md) を参照すること．
 
+#### 回路図
+![schematic](schematic/mp2_schem.jpg)
+
 ### ソフトウェア
 #### スクリプトのダウンロードと追加パッケージのインストール
 以下のコードをコピペする．
@@ -41,7 +44,7 @@ sh ManufacturingPractice2_A2/install.sh
 Arduino promini にスケッチをアップロードする．詳細は [ManufacturingPractice2_A2_ard_sketch_GitHub](https://github.com/sik103/ManufacturingPractice2_A2_ard_sketch) を参照すること．
 
 #### gdriveの設定と音源のダウンロード
-著作権等の問題により，GitHubへの音源の保存が難しいと思われるため，音源はGoogle driveに入れ，テスト環境と本番環境を同期化させる．詳細は [gdrive_manual](manuals/gdrive_manual.md) を参照すること．
+著作権等の問題により，GitHubへの音源の保存が難しいと思われるため，音源はGoogle Driveに入れ，テスト環境と本番環境を同期化させる．詳細は [gdrive_manual](manuals/gdrive_manual.md) を参照すること．
 
 ### その他のRaspberry PIの設定方法
 詳細は [rpi_manual](manuals/rpi_manual.md) を参照すること．
